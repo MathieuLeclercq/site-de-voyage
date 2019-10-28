@@ -33,6 +33,10 @@ function prixsejour() {
     var nbEnfants = document.getElementById("enfants").value;
     var nbAdultes = document.getElementById("adultes").value;
     alert(+nbAdultes + +nbEnfants)
+    var dateDepart = document.getElementById("depart").value;    
+    var dateRetour = document.getElementById("retour").value;
+    alert(dateDepart);
+    alert(dateRetour);
 
     
 }
