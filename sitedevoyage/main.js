@@ -15,7 +15,7 @@
 
 function filtre() {
     for (var i in destinations) {
-        if ((document.getElementById("prix").value > destinations[i][1]) || ((document.getElementById("dej").checked) && (destinations[i][4] == true))) {
+        if ((document.getElementById("prix").value > destinations[i][1]) || ((document.getElementById("dejeuner").checked) && (destinations[i][4] == true))) {
                 document.getElementById(i).style.opacity = "0.30";
                 document.getElementById(i).removeAttribute("href");
             } else {
