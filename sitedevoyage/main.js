@@ -14,8 +14,9 @@
 };
 
 function filtre() {
+    
     for (var i in destinations) {
-        if ((document.getElementById("prix").value > destinations[i][1]) || ((document.getElementById("dejeuner").checked) && (destinations[i][4] == true))|| ((document.getElementById("animaux").checked) && (destinations[i][5] == true)))  {
+        if ( !(destinations[i][0].toLowerCase().startsWith(document.getElementById("search").value.toLowerCase())) || (document.getElementById("prix").value > destinations[i][1]) || ((document.getElementById("dejeuner").checked) && (destinations[i][4] == true)) || ((document.getElementById("animaux").checked) && (destinations[i][5] == true)))  {
                 document.getElementById(i).style.opacity = "0.30";
                 document.getElementById(i).removeAttribute("href");
             } else {
