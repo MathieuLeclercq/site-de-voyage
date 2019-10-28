@@ -207,7 +207,7 @@
         padding-bottom: 44%;
         background-repeat: no-repeat;
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-        text-size-adjust: ;
+        text-size-adjust:auto ;
     }
 
     nav{
