@@ -30,7 +30,7 @@
     </header>
 
     <div id=center>
-        <h1>Reservation: Portugal</h1>
+        <h1 onload="prixsejour()" >Reservation: Portugal</h1>
         <form id=resa action="recapitulatif.html">
             <input required name="nom" type="text" placeholder="Nom*" /><br/>
             <input required name="prenom" type="text" placeholder="Prénom*" /><br/>
@@ -49,7 +49,10 @@
             <input type="reset" value="Réinitialiser" />
             <br/>
             <br/>
-            <p>Prix de la commande :</p>
+            <p >
+                Prix de la commande : <span id="prix"></span> €
+                
+            </p>
         </form>
     </div>
     
