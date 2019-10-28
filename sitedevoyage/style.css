@@ -224,6 +224,19 @@
         padding: 0;  
       }
     
+      @media all and (max-width: 1024px)
+      {
+          #rubrique
+          {
+              flex-direction: column;
+
+          }
+      }
+
+
+
+    
+
     #pt {
         background-image: url("images/portugal.jpg");        
     }
