@@ -77,9 +77,10 @@
 
 
     .souss {
-        border-radius: 45px ;
+        border-radius: 45px 45px 0px 0px;
         text-align: center;
         width: 40%;
+        height: min-content;
         margin-bottom: 2em;
         box-shadow: 0px 1px 2px 1px #aaa;
     }
