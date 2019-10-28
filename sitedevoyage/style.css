@@ -1,0 +1,275 @@
+    #decouvrez {
+        text-align: center;
+    }
+
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+    
+    body {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        justify-content: stretch;
+        font-family: 'Arvo', serif;
+        flex-direction: column;
+        height: 100%;
+    }
+
+
+
+    li {
+        list-style-type: none;
+        color: #fff;
+        margin: 5px 5px 5px 5px;
+        padding: 5px 5px 5px 5px;
+    }
+    
+    a:link,
+    a:visited {
+        text-decoration: none;
+        color: white;
+    }
+    
+    li>a:visited,
+    li>a:link {
+        color: #fff;
+    }
+    
+    ul {
+        background-color: rgb(28, 138, 219);
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    #logo {
+        width: 100px;
+    }
+    
+    #search {
+        border-radius: 45px 45px 45px 45px;
+        margin-left: 15%;
+        width: 70%;
+        height: 40px;
+        box-shadow:1px 1px 3px #aaa;
+    }
+    
+    #rubrique {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    #center {
+        flex: 1;
+    }
+
+
+
+    .souss {
+        border-radius: 45px ;
+        text-align: center;
+        width: 40%;
+        margin-bottom: 2em;
+        box-shadow: 0px 1px 2px 1px #aaa;
+    }
+    
+
+
+    .souss ul {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        background-color: white;
+
+    }
+    
+    .souss>ul>li {
+        width: 50%;
+        padding: 0;
+        margin: 0;
+
+
+
+    }
+    a>img {
+        width: 100%;
+    }
+    header {
+        display: flex;
+        background-color: rgb(28, 138, 219);
+        padding: 0;
+        margin: 0;
+        justify-content: space-between;
+        z-index: 1;
+    }
+
+    footer {
+        display: flex;
+        background-color: rgb(28, 138, 219);
+        padding: 0;
+        margin: 0;
+        margin-top: 10px;
+        box-shadow: 0px 0px 2px 1px #aaa;
+        justify-content: center;
+    }
+    
+    footer>a {
+        
+        margin:0;
+        padding-top: 10px;
+        padding-bottom: 13px;
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+
+    footer>a:hover {
+        
+        margin:0;
+        padding-top: 10px;
+        padding-bottom: 13px;
+        background-color: white;
+        color: rgb(28, 138, 219);
+        transition-delay: 100ms;
+    }
+
+    #fleche {
+        display: flex;
+        position: fixed;
+        right: 15px;
+        padding: 0;
+        margin: 0;
+        justify-content: center;
+
+    }
+
+    #fleche> a {
+        background-color: rgb(28, 139, 219);
+        box-shadow: 0px 0px 1px 0px #aaa;
+        font-size: xx-large;
+        width: 30px;
+        text-align: center;
+        padding: 0px 8px 8px 8px;
+        margin: inherit;
+        padding-bottom: 5px;
+        border-radius: 50%;
+    }
+
+    #fleche>a:hover {
+        background-color: rgb(28, 158, 219);
+        transition-delay: 100ms;
+    }
+    
+    header>ul {
+        margin: 0;
+        padding: 0;
+        background-color: inherit;
+    }
+
+    header>ul>li {
+        padding: 0;
+    } 
+    
+    header>ul>li>a {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    #panier {
+        background-image: url("panier.png");
+        background-size:100%;
+        width: 50px;
+        padding-bottom: 44%;
+        background-repeat: no-repeat;
+    }
+
+    #login {
+        background-image: url("login.png");
+        background-size:100%;
+        width: 50px;
+        padding-bottom: 44%;
+        background-repeat: no-repeat;
+    }
+        
+    .souss>ul>li>a {
+        display: flex;
+        background-size:100%;
+        width: 100%;
+        padding-bottom: 44%;
+        background-repeat: no-repeat;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        text-size-adjust: ;
+    }
+
+    nav{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 7px;
+    }
+
+
+    nav>ul {
+        display: flex;
+        justify-content: center;
+        box-shadow: 0px 0px 12px 1px #aaa;
+        margin-top: 0;
+        padding: 0;  
+      }
+    
+    #pt {
+        background-image: url("images/portugal.jpg");        
+    }
+    
+    #it {
+        background-image: url("images/italie.jpg");
+    }
+    
+    #ir {
+        background-image: url("images/ireland.jpg");
+    }
+    
+    #jp {
+        background-image: url("images/japon.jpg");
+    }
+    
+    #us {
+        background-image: url("images/usa.PNG");
+    }
+    
+    #es {
+        background-image: url("images/espagne.jpg");
+    }
+    
+    #lis {
+        background-image: url("images/Lisbonne.jpg");
+    }
+    
+    #lon {
+        background-image: url("images/londres.jpeg");
+    }
+    
+    #dub {
+        background-image: url("images/dublin.jpg");
+    }
+    
+    #nyc {
+        background-image: url("images/New-York.jpg");
+    }
+    
+    #sin {
+        background-image: url("images/singapour.jpg");
+    }
+    
+    #par {
+        background-image: url("images/paris.jpeg");
+    }
+
+

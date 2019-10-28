@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Braz'àville</title>
+    <link rel="icon" href="logobrazaville.jpg" />
+    <script src="main.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id=haut></div>
+
+
+    <header>
+        <a href="homepage.html"><img alt="logo" src="logobrazaville.png" id=logo /></a>
+        <ul>
+            <li>
+                <a href="recapitulatif.html" id=panier></a>
+            </li>
+            <li>
+                <a id=login href="login.html"></a>
+            </li>
+            <li>
+                <a href="register.html"></a>
+            </li>
+        </ul>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <label for='prix'>Prix maximum <input oninput="filtre()" type="number" id="prix" name="prix"></label>
+
+            </li>
+            <li>
+                <label for="depart">Date de départ <input onchange="filtre()" type="date" id="depart" name="depart"></label>
+
+            </li>
+            <li>
+                <label for="retour">Date de retour <input onchange="filtre()" type="date" id="retour" name="retour" ></label>
+
+            </li>
+            <li>
+                <label for="dejeuner">Petit-déjeuner<input onchange="filtre()" type="checkbox" id="dejeuner" name="Petit-déjeuner"></label>
+
+            </li>
+            <li>
+                <label for="animaux">Présence d'animaux<input onchange="filtre()" type="checkbox" id="animaux"></label>
+            </li>
+        </ul>
+
+        <input type="search" id="search" placeholder="Où voulez-vous partir ?" />
+    </nav>
+
+
+    <div id=center>
+
+        <h1 id=decouvrez>Découvrez les meilleures destinations du moment !</h1>
+
+        <div id=rubrique>
+            <section class=souss>
+                <h2>Les pays incontournables</h2>
+                <ul>
+                    <li><a href="Reservation.html" id=pt>Portugal</a></li>
+                    <li><a href="Reservation.html" id=it>Italie</a></li>
+                    <li><a href="Reservation.html" id=ir>Irlande</a></li>
+                    <li><a href="Reservation.html" id=jp>Japon</a></li>
+                    <li><a href="Reservation.html" id=us>Etats-Unis</a></li>
+                    <li><a href="Reservation.html" id=es>Espagne</a></li>
+                </ul>
+            </section>
+
+            <section class=souss>
+                <h2>Les villes incontournables</h2>
+                <ul>
+                    <li><a href="Reservation.html" id=lis>Lisbonne</a></li>
+                    <li><a href="Reservation.html" id=lon>Londres</a></li>
+                    <li><a href="Reservation.html" id=dub>Dublin</a></li>
+                    <li><a href="Reservation.html" id=nyc>New York</a></li>
+                    <li><a href="Reservation.html" id=sin>Singapour</a></li>
+                    <li><a href="Reservation.html" id=par>Paris</a></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div id=fleche><a href="#haut">↑</a></div>
+
+
+
+    <footer>
+        <a href="Contact.html">A propos & Contact</a>
+    </footer>
+
+
+</body>
+
+</html>
