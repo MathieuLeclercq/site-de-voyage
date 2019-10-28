@@ -36,12 +36,12 @@
             <input required name="prenom" type="text" placeholder="Prénom*" /><br/>
             <input required name="email" type="email" placeholder="e-mail*" /><br/>
             <input name="tel" type="tel" placeholder="Téléphone" /><br/>
-            <label>Du : <input required name="depart" type="date" id="depart" /></label><br/>
+            <label>Du : <input onchange ="prixsejour()" required name="depart" type="date" id="depart" /></label><br/>
 
-            <label>Au : <input required name="retour" type="date" id="retour" /></label><br/>
+            <label>Au : <input onchange ="prixsejour()" required name="retour" type="date" id="retour" /></label><br/>
 
-            <input oninput ="prixsejour()" required name="adultes" id="adultes" type="number" placeholder="Nombre d'adultes" /><br/>
-            <input oninput ="prixsejour()" required name="enfants" id="enfants"  type="number" placeholder="Nombre d'enfants (-12 ans)*" /><br/>
+            <input oninput ="prixsejour()" required name="adultes" id=adultes type="number" placeholder="Nombre d'adultes" /><br/>
+            <input oninput ="prixsejour()" required name="enfants" id=enfants  type="number" placeholder="Nombre d'enfants (-12 ans)*" /><br/>
             <label><input type="checkbox" name="dej" id="dej" />Petit-dejeuner ?</label><br/>
             <label><input type="checkbox" name="animal" id="animal" />Animaux ?</label><br/>
             <textarea placeholder="Renseignements supplémentaires"></textarea><br/>
