@@ -1,4 +1,6 @@
-﻿var destinations = {
+﻿
+
+var destinations = {
     "pt": ["Portugal", 200, true, true, false, true],
     "it": ["Italie", 100, true, true, false, false],
     "ir": ["Irlande", 300, true, true, true, false],
@@ -40,6 +42,14 @@ function prixsejour() {
     var prix = (nbAdultes*(prixNuit*nbNuits)+nbEnfants*(prixNuit/2.5*nbNuits))+nbNuits*12*dej;
 
     document.getElementById("prix").innerHTML = prix;
-
     
+}
+function voyageselec(dest) {
+    var voyageSelectionne = document.getElementById(dest).innerHTML;
+    alert(voyageSelectionne);
+
+}
+function d() {
+    alert('bonjour');
+    document.getElementById("voyageSelectionne").innerHTML = voyageSelectionne;
 }
