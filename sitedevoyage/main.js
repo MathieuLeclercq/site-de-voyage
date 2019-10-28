@@ -27,3 +27,11 @@ function filtre() {
         }
 
     }
+
+function prixsejour() {
+    var nbEnfants = document.getElementById("enfants").value;
+    var nbAdultes = document.getElementById("adultes").value;
+    alert(+nbAdultes + +nbEnfants)
+
+    
+}
