@@ -36,7 +36,8 @@ function prixsejour() {
     var dateRetour = new Date(document.getElementById("retour").value);
     nbNuits = Math.abs(dateRetour-dateDepart)/(1000*3600*24);
     var dej = document.getElementById("dej").checked/1;
-    var prix = (nbAdultes*(100*nbNuits)+nbEnfants*(100/2.5*nbNuits))+nbNuits*12*dej;
+    var prixNuit = 100 /* à changer plus tard */
+    var prix = (nbAdultes*(prixNuit*nbNuits)+nbEnfants*(prixNuit/2.5*nbNuits))+nbNuits*12*dej;
 
     document.getElementById("prix").innerHTML = prix;
 
