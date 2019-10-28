@@ -29,13 +29,13 @@ function filtre() {
     }
 
 function prixsejour() {
-    var nbEnfants = document.getElementById("enfants").value;
-    var nbAdultes = document.getElementById("adultes").value;
-    alert(+nbAdultes + +nbEnfants)
-    var dateDepart = document.getElementById("depart").value;    
-    var dateRetour = document.getElementById("retour").value;
-    alert(dateDepart);
-    alert(dateRetour);
+    var nbEnfants =document.getElementById("enfants").value;
+    var nbAdultes =document.getElementById("adultes").value;
+
+    var dateDepart = new Date(document.getElementById("depart").value);    
+    var dateRetour = new Date(document.getElementById("retour").value);
+    nbNuits = Math.abs(dateRetour-dateDepart)/(1000*3600*24);
+    alert(nbNuits);
 
     
 }
