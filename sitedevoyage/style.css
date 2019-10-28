@@ -223,7 +223,22 @@
         margin-top: 0;
         padding: 0;  
       }
-    
+
+      @media all and (min-width: 1025px) and (max-width: 1500px)
+      {
+          #rubrique
+          {
+              flex-direction: column;
+              align-items: center;
+
+          }
+
+          .souss
+          {
+            width: 70%;
+          }
+      }
+
       @media all and (max-width: 1024px)
       {
           #rubrique
@@ -235,10 +250,7 @@
           .souss
           {
             border-radius: 0px ;
-            text-align: center;
             width: 100%;
-            margin-bottom: 2em;
-            box-shadow: 0px 1px 2px 1px #aaa;
           }
       }
 
