@@ -47,9 +47,9 @@ function prixsejour() {
 function voyageselec(dest) {
     var voyageSelectionne = document.getElementById(dest).innerHTML;
     alert(voyageSelectionne);
-
+    document.getElementById("voyageSelectionne").innerHTML = voyageSelectionne;
 }
 function d() {
-    alert('bonjour');
+
     document.getElementById("voyageSelectionne").innerHTML = voyageSelectionne;
 }
