@@ -1,4 +1,6 @@
-﻿var destinations = {
+﻿
+
+var destinations = {
     "pt": ["Portugal", 200, true, true, false, true],
     "it": ["Italie", 100, true, true, false, false],
     "ir": ["Irlande", 300, true, true, true, false],
@@ -52,9 +54,18 @@ function prixsejour() {
     var dateRetour = new Date(document.getElementById("retour").value);
     nbNuits = (dateRetour-dateDepart)/(1000*3600*24);
     var dej = document.getElementById("dej").checked/1;
-    var prix = (nbAdultes*(100*nbNuits)+nbEnfants*(100/2.5*nbNuits))+nbNuits*12*dej;
+    var prixNuit = 100 /* à changer plus tard */
+    var prix = (nbAdultes*(prixNuit*nbNuits)+nbEnfants*(prixNuit/2.5*nbNuits))+nbNuits*12*dej;
 
     document.getElementById("prix").innerHTML = prix;
-
     
+}
+function voyageselec(dest) {
+    var voyageSelectionne = document.getElementById(dest).innerHTML;
+    alert(voyageSelectionne);
+    document.getElementById("voyageSelectionne").innerHTML = voyageSelectionne;
+}
+function d() {
+
+    document.getElementById("voyageSelectionne").innerHTML = voyageSelectionne;
 }
