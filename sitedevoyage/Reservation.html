@@ -28,7 +28,7 @@
             </li>
         </ul>
     </header>
-    
+
     <div id=center>
         <h1>Reservation: Portugal</h1>
         <form id=resa enctype="application/json" action="recapitulatif.html">
@@ -36,14 +36,14 @@
             <input required name="prenom" type="text" placeholder="Prénom*" /><br/>
             <input required name="email" type="email" placeholder="e-mail*" /><br/>
             <input name="tel" type="tel" placeholder="Téléphone" /><br/>
-            <label for:depart>Du : <input required name="depart" type="date" id="depart" /></label><br/>
+            <label>Du : <input required name="depart" type="date" id="depart" /></label><br/>
 
-            <label for:retour>Au : <input required name="retour" type="date" id="retour" /></label><br/>
+            <label>Au : <input required name="retour" type="date" id="retour" /></label><br/>
 
             <input oninput ="prixsejour()" required name="adultes" id="adultes" type="number" placeholder="Nombre d'adultes" /><br/>
             <input oninput ="prixsejour()" required name="enfants" id="enfants"  type="number" placeholder="Nombre d'enfants (-12 ans)*" /><br/>
-            <label for:dej><input type="checkbox" name="dej" id="dej" />Petit-dejeuner ?</label><br/>
-            <label for:animal><input type="checkbox" name="animal" id="animal" />Animaux ?</label><br/>
+            <label><input type="checkbox" name="dej" id="dej" />Petit-dejeuner ?</label><br/>
+            <label><input type="checkbox" name="animal" id="animal" />Animaux ?</label><br/>
             <textarea placeholder="Renseignements supplémentaires"></textarea><br/>
             <input type="submit" value="Valider" />
             <input type="reset" value="Réinitialiser" />
