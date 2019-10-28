@@ -24,7 +24,6 @@ function filtre() {
                 document.getElementById(i).href = "Reservation.html";
             }
 
-
         }
 
     }
