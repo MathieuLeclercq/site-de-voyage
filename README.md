@@ -1,2 +1,2 @@
-# site de voyage
- c'est un voyage fait par Lucas BRAZ et Mathieu LECLERCQ
+# Site de voyage
+ C'est un site de voyage fait par Lucas BRAZ et Mathieu LECLERCQ
