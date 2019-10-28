@@ -32,7 +32,7 @@
     <nav>
         <ul>
             <li>
-                <label for='prix'>Prix maximum <input oninput="filtre()" type="number" id="prix" name="prix"></label>
+                <label for='prix'>Prix maximum <input oninput="filtre()" type="number" id="prix" name="prix" placeholder="0"></label>
 
             </li>
             <li>
@@ -52,7 +52,7 @@
             </li>
         </ul>
 
-        <input type="search" id="search" placeholder="Où voulez-vous partir ?" />
+        <input oninput="filtre()" type="search" id="search" placeholder="Où voulez-vous partir ?" />
     </nav>
 
 
