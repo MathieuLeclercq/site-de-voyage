@@ -31,20 +31,20 @@ function filtre() {
     }
 
 
-function datesok() {
-    var now = new Date();
-    if (now > document.getElementById("depart").value) {
-        alert("wesh alors")
-        /*document.getElementById("depart") = "";*/
+function datesok(lequel) {
+    now = new Date();
+    if ((now.getTime() - now.getTime()%86400000) > new Date(document.getElementById("depart").value).getTime()) {
+        document.getElementById("depart").value = "";
     }
-    if (now >= document.getElementById("retour").value) {
-       /* document.getElementById("retour") = ""; */
+    if ((now.getTime() - now.getTime()%86400000) >= new Date(document.getElementById("retour").value).getTime()) {
+        document.getElementById("retour").value = "";
     }
-    if ((document.getElementById("depart").value >= document.getElementById("retour").value) && (document.getElementById("retour") != "")) {
-       /* document.getElementById("retour") = "";
-        document.getElementById("depart") = "";*/
+    if ((new Date(document.getElementById("depart").value).getTime() >= new Date(document.getElementById("retour").value).getTime()) && (document.getElementById("retour") != "")) {
+        document.getElementById(lequel).value = "";
     }
 }
+
+
 
 function prixsejour() {
     var nbEnfants = document.getElementById("enfants").value;
@@ -63,7 +63,15 @@ function prixsejour() {
 
 
 
+function doublefonction(lequel) {
+    datesok(lequel);
+    prixsejour();
+}
 
+function doublefonction2(lequel) {
+    datesok(lequel);
+    filtre();
+}
 
 function voyageselec(dest) {
 
@@ -73,8 +81,7 @@ function voyageselec(dest) {
 
 }
 function d() {
-    var a = window.location.hash;
-    var a2 =a.substr(1);
+    var endroit = window.location.hash.substr(1);
 
-    document.getElementById("voyageSelectionne").innerHTML = destinations[a2][0];
+    document.getElementById("voyageSelectionne").innerHTML = destinations[endroit][0];
 }
