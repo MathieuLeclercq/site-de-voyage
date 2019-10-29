@@ -41,8 +41,8 @@
 
             <label>Au : <input onchange ="doublefonction(this.id)" required name="retour" type="date" id="retour" /></label><br/>
 
-            <input oninput ="prixsejour()" required name="adultes" id=adultes type="number" placeholder="Nombre d'adultes" /><br/>
-            <input oninput ="prixsejour()" required name="enfants" id=enfants  type="number" placeholder="Nombre d'enfants (-12 ans)*" /><br/>
+            <input oninput ="doublefonction3(this.id)" required name="adultes" id=adultes type="number" min=0 placeholder="Nombre d'adultes" /><br/>
+            <input oninput ="doublefonction3(this.id)" required name="enfants" id=enfants  type="number" min=0 placeholder="Nombre d'enfants (-12 ans)*" /><br/>
             <label><input onchange="prixsejour()" type="checkbox" name="dej" id="dej" />Petit-déjeuner ?</label><br/>
             <label><input type="checkbox" name="animal" id="animal" />Animaux ?</label><br/>
             <textarea placeholder="Renseignements supplémentaires"></textarea><br/>
