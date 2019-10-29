@@ -57,7 +57,11 @@ function prixsejour() {
     var prixNuit = 100 /* à changer plus tard */
     var prix = (nbAdultes*(prixNuit*nbNuits)+nbEnfants*(prixNuit/2.5*nbNuits))+nbNuits*12*dej;
 
-    document.getElementById("prix").innerHTML = prix;
+    if (prix > 0) {
+        document.getElementById("prix").innerHTML = prix;
+    } else {
+        document.getElementById("prix").innerHTML = "0";
+    }
     
 }
 
