@@ -34,7 +34,7 @@ function filtre() {
 function datesok() {
     var now = new Date();
     if (now > document.getElementById("depart").value) {
-        alert("wesh alors")
+        alert("wesh alors");
         /*document.getElementById("depart") = "";*/
     }
     if (now >= document.getElementById("retour").value) {
@@ -66,13 +66,13 @@ function prixsejour() {
 
 
 function voyageselec(dest) {
-    window.lVoyage = []
-    window.voyageSelectionne = document.getElementById(dest).innerHTML;
-    window.lVoyage.push(document.getElementById(dest).innerHTML);
-    alert(lVoyage);
+    windows.lVoyage = [];
+    windows.voyageSelectionne = destinations[dest][0];
+    lVoyage.push(destinations[dest][0]);
+    alert("bb");
 
 }
 function d() {
-    alert(window.lVoyage);
-    document.getElementById("voyageSelectionne").innerHTML = window.voyageSelectionne;
+    alert(lVoyage);
+    document.getElementById("voyageSelectionne").innerHTML = voyageSelectionne;
 }
