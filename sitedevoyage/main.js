@@ -66,13 +66,15 @@ function prixsejour() {
 
 
 function voyageselec(dest) {
-    window.lVoyage = []
+
     window.voyageSelectionne = document.getElementById(dest).innerHTML;
-    window.lVoyage.push(document.getElementById(dest).innerHTML);
-    alert(lVoyage);
+
+
 
 }
 function d() {
-    alert(window.lVoyage);
-    document.getElementById("voyageSelectionne").innerHTML = window.voyageSelectionne;
+    var a = window.location.hash;
+    var a2 =a.substr(1);
+
+    document.getElementById("voyageSelectionne").innerHTML = destinations[a2][0];
 }
