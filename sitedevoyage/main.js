@@ -60,12 +60,19 @@ function prixsejour() {
     document.getElementById("prix").innerHTML = prix;
     
 }
+
+
+
+
+
 function voyageselec(dest) {
-    var voyageSelectionne = document.getElementById(dest).innerHTML;
-    alert(voyageSelectionne);
-    document.getElementById("voyageSelectionne").innerHTML = voyageSelectionne;
+    window.lVoyage = []
+    window.voyageSelectionne = document.getElementById(dest).innerHTML;
+    window.lVoyage.push(document.getElementById(dest).innerHTML);
+    alert(lVoyage);
+
 }
 function d() {
-
-    document.getElementById("voyageSelectionne").innerHTML = voyageSelectionne;
+    alert(window.lVoyage);
+    document.getElementById("voyageSelectionne").innerHTML = window.voyageSelectionne;
 }
