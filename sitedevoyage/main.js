@@ -33,12 +33,15 @@ function datesok(lequel) {
     now = new Date();
     if ((now.getTime() - now.getTime()%86400000) > new Date(document.getElementById("depart").value).getTime()) {
         document.getElementById("depart").value = "";
+        alert("veuillez choisir une date valide");
     }
     if ((now.getTime() - now.getTime()%86400000) >= new Date(document.getElementById("retour").value).getTime()) {
         document.getElementById("retour").value = "";
+        alert("veuillez choisir une date valide");
     }
     if ((new Date(document.getElementById("depart").value).getTime() >= new Date(document.getElementById("retour").value).getTime()) && (document.getElementById("retour") != "")) {
         document.getElementById(lequel).value = "";
+        alert("La date de départ doit être antérieure à la date d'arrivée !");
     }
 }
 
