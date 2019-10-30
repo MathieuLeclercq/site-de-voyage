@@ -1,14 +1,14 @@
 ﻿var destinations = {
     "pt": ["Portugal", 200, true, true, false, true],
-    "it": ["Italie", 100, true, true, false, false],
-    "ir": ["Irlande", 300, true, true, true, false],
+    "it": ["Italie", 100, true, true, true, false],
+    "ir": ["Irlande", 300, true, true, true, true],
     "jp": ["Japon", 800, true, true, false, false],
-    "us": ["Etats-Unis", 1100, true, true, false, false],
+    "us": ["Etats-Unis", 1100, true, true, false, true],
     "es": ["Espagne", 50, true, true, true, false],
     "lis": ["Lisbonne", 200, true, true, false, false],
     "lon": ["Londres", 500, true, true, true, false],
     "dub": ["Dublin", 400, true, true, false, true],
-    "nyc": ["New York", 1100, true, true, false, false],
+    "nyc": ["New York", 1100, true, true, true, true],
     "sin": ["Singapour", 800, true, true, false, false],
     "par": ["Paris", 50, true, true, false, false]
 };
@@ -89,23 +89,39 @@ function doublefonction3(lequel) {
     prixsejour();
 }
 
+function monFiltre(depart,arrive,dej,animaux) {
+    this.depart = depart;
+    this.retour = arrive;
+    this.dejeuner = dej;
+    this.animaux = animaux;
+}
+
 function voyageselec(dest) {
-
-    window.voyageSelectionne = document.getElementById(dest).innerHTML;
-
-
-
+    var dest = dest; /* inutile pour le moment */
+    /*var filtreuser = {
+    depart : document.getElementById("depart").value,
+    retour : document.getElementById("retour").value,
+    dejeuner : document.getElementById("dejeuner").checked,
+    animaux : document.getElementById("animaux").checked
+    };*/
+    var filtreuser = new monFiltre(document.getElementById("depart").value,document.getElementById("retour").value,document.getElementById("dejeuner").checked,document.getElementById("animaux").checked);
+    window.localStorage.setItem("filtre",JSON.stringify(filtreuser));
+    alert(JSON.stringify(filtreuser));
+    
 }
+
 function d() {
+    filtreuser = JSON.parse(localStorage.getItem("filtre"));
     var endroit = window.location.hash.substr(1);
-
     document.getElementById("voyageSelectionne").innerHTML = destinations[endroit][0];
+
+    document.getElementById("depart").value = filtreuser.depart;
+    document.getElementById("retour").value = filtreuser.retour;
+    document.getElementById("dej").checked = filtreuser.dejeuner; /* bloquer petit dej à decoché si impossible d'en prendre un */
+    document.getElementById("animal").checked = filtreuser.animaux; /* bloquer animaux à decoché si impossible d'en prendre un */
+
+
 }
 
-function monFiltre(depart,arrive,dej,animaux) = {
-    this.depart: depart;
-    this.arrive:arrive;
-    this.dej:dej;
-    this.animaux:animaux;
-}
+
 
