@@ -1,16 +1,16 @@
 ﻿var destinations = {
-    "pt": ["Portugal", 200, true, true, false, true, "images/portugal.jpg",0],
-    "it": ["Italie", 100, true, true, true, false, "images/italie.jpg",0],
-    "ir": ["Irlande", 300, true, true, true, true, "images/ireland.jpg",0],
-    "jp": ["Japon", 800, true, true, false, false, "images/japon.jpg",0],
-    "us": ["Etats-Unis", 1100, true, true, false, true, "images/usa.PNG",0],
-    "es": ["Espagne", 50, true, true, true, false, "images/espagne.jpg",0],
-    "lis": ["Lisbonne", 200, true, true, false, false, "images/Lisbonne.jpg",2267057],
-    "lon": ["Londres", 500, true, true, true, false, "images/londres.jpeg",2643743],
-    "dub": ["Dublin", 400, true, true, false, true, "images/dublin.jpg",2964574],
-    "nyc": ["New York", 1100, true, true, true, true, "images/New-York.jpg",5128581],
-    "sin": ["Singapour", 800, true, true, false, false, "images/singapour.jpg",1880252],
-    "par": ["Paris", 50, true, true, false, false, "images/paris.jpeg",2988507]
+    "pt": ["Portugal", 200, true, true, false, true, "images/portugal.jpg", 0],
+    "it": ["Italie", 100, true, true, true, false, "images/italie.jpg", 0],
+    "ir": ["Irlande", 300, true, true, true, true, "images/ireland.jpg", 0],
+    "jp": ["Japon", 800, true, true, false, false, "images/japon.jpg", 0],
+    "us": ["Etats-Unis", 1100, true, true, false, true, "images/usa.PNG", 0],
+    "es": ["Espagne", 50, true, true, true, false, "images/espagne.jpg", 0],
+    "lis": ["Lisbonne", 200, true, true, false, false, "images/Lisbonne.jpg"],
+    "lon": ["Londres", 500, true, true, true, false, "images/londres.jpeg"],
+    "dub": ["Dublin", 400, true, true, false, true, "images/dublin.jpg"],
+    "nyc": ["New York", 1100, true, true, true, true, "images/New-York.jpg"],
+    "sin": ["Singapour", 800, true, true, false, false, "images/singapour.jpg"],
+    "par": ["Paris", 50, true, true, false, false, "images/paris.jpeg"]
 };
 
 function filtre() {
@@ -131,15 +131,18 @@ function d() {
 
 
 }
-function meteo(id) {
-    fetch("http://api.openweathermap.org/data/2.5/weather?id="+destinations[id][7]+"&appid=53abf0667a0c2625fd059b88b10e51f7")
-    .then(function(resp) {return resp.json()})
-    .then (function(data) {
-        var temperature = Math.round(parseFloat(data.main.temp)-273.15);
-        alert(temperature)
-    })
 
+let template = document.getElementById(listepays);
+for (const i of destinations) {
+    if (destinations[i][6] = 0) { // itère sur le tableau
+        let clone = document.importNode(template.content, true); // clone le template
+
+        newContent = clone.firstElementChild.innerHTML // remplace {{modèle}}
+            .replace(/{{iddest}}/g, destination[i]) // et {{couleur}} par
+            .replace(/{{dest}}/g, v.couleur); // leur valeur
+
+        clone.firstElementChild.innerHTML = newContent
+
+        document.body.appendChild(clone); // On ajoute le clone créé
+    }
 }
-alert(des)
-
-
