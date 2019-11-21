@@ -126,5 +126,8 @@ function d() {
 
 }
 
-
-
+fetch("http://api.openweathermap.org/data/2.5/weather?id=2267057&appid=53abf0667a0c2625fd059b88b10e51f7")
+.then(function(resp) {return resp.json()})
+.then (function(data) {
+    console.log(data)
+})
