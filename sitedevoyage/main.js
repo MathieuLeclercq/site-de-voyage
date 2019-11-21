@@ -1,16 +1,16 @@
 ﻿var destinations = {
-    "pt": ["Portugal", 200, true, true, false, true, "images/portugal.jpg"],
-    "it": ["Italie", 100, true, true, true, false, "images/italie.jpg"],
-    "ir": ["Irlande", 300, true, true, true, true, "images/ireland.jpg"],
-    "jp": ["Japon", 800, true, true, false, false, "images/japon.jpg"],
-    "us": ["Etats-Unis", 1100, true, true, false, true, "images/usa.PNG"],
-    "es": ["Espagne", 50, true, true, true, false, "images/espagne.jpg"],
-    "lis": ["Lisbonne", 200, true, true, false, false, "images/Lisbonne.jpg"],
-    "lon": ["Londres", 500, true, true, true, false, "images/londres.jpeg"],
-    "dub": ["Dublin", 400, true, true, false, true, "images/dublin.jpg"],
-    "nyc": ["New York", 1100, true, true, true, true, "images/New-York.jpg"],
-    "sin": ["Singapour", 800, true, true, false, false, "images/singapour.jpg"],
-    "par": ["Paris", 50, true, true, false, false, "images/paris.jpeg"]
+    "pt": ["Portugal", 200, true, true, false, true, "images/portugal.jpg",0],
+    "it": ["Italie", 100, true, true, true, false, "images/italie.jpg",0],
+    "ir": ["Irlande", 300, true, true, true, true, "images/ireland.jpg",0],
+    "jp": ["Japon", 800, true, true, false, false, "images/japon.jpg",0],
+    "us": ["Etats-Unis", 1100, true, true, false, true, "images/usa.PNG",0],
+    "es": ["Espagne", 50, true, true, true, false, "images/espagne.jpg",0],
+    "lis": ["Lisbonne", 200, true, true, false, false, "images/Lisbonne.jpg",2267057],
+    "lon": ["Londres", 500, true, true, true, false, "images/londres.jpeg",2643743],
+    "dub": ["Dublin", 400, true, true, false, true, "images/dublin.jpg",2964574],
+    "nyc": ["New York", 1100, true, true, true, true, "images/New-York.jpg",5128581],
+    "sin": ["Singapour", 800, true, true, false, false, "images/singapour.jpg",1880252],
+    "par": ["Paris", 50, true, true, false, false, "images/paris.jpeg",2988507]
 };
 
 function filtre() {
@@ -131,10 +131,17 @@ function d() {
 
 
 }
-
-fetch("http://api.openweathermap.org/data/2.5/weather?id=2267057&appid=53abf0667a0c2625fd059b88b10e51f7")
-.then(function(resp) {return resp.json()})
-.then (function(data) {
-    console.log(data)
-})
+function meteo(id) {
+    fetch("http://api.openweathermap.org/data/2.5/weather?id="+id+"&appid=53abf0667a0c2625fd059b88b10e51f7")
+    .then(function(resp) {return resp.json()})
+    .then (function(data) {
+        var temp = Math.round(parseFloat(data.main.temp)-273.15);
+        
+    
+    })
+    return temp
 }
+onload = meteo(2988507)
+var x = meteo(2988507)
+alert(x)
+
