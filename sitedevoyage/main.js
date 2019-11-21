@@ -135,11 +135,10 @@ function meteo(id) {
     fetch("http://api.openweathermap.org/data/2.5/weather?id="+id+"&appid=53abf0667a0c2625fd059b88b10e51f7")
     .then(function(resp) {return resp.json()})
     .then (function(data) {
-        var temp = Math.round(parseFloat(data.main.temp)-273.15);
+        var tempe = Math.round(parseFloat(data.main.temp)-273.15);
         
-    
     })
-    return temp
+    
 }
 onload = meteo(2988507)
 var x = meteo(2988507)
