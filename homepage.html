@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Braz'àville</title>
+    <link rel="icon" href="logobrazaville.jpg" />
+    <script src="main.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
+</head>
+
+<body onload="createvoyages()">
+    <div id=haut></div>
+
+
+    <header>
+        <a href="homepage.html"><img alt="logo" src="logobrazaville.png" id=logo /></a>
+        <ul>
+            <li>
+                <a href="recapitulatif.html" id=panier></a>
+            </li>
+            <li>
+                <a id=login href="login.html"></a>
+            </li>
+            <li>
+                <a href="register.html"></a>
+            </li>
+        </ul>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <label for='prix'>Prix maximum (à la nuit) <input oninput="filtre()" min=50 step=50 type="number" id="prix" name="prix" value=1100 ></label>
+
+            </li>
+            <li>
+                <label for="depart">Date de départ <input onchange="doublefonction2(this.id)" type="date" id="depart" name="depart"></label>
+
+            </li>
+            <li>
+                <label for="retour">Date de retour <input onchange="doublefonction2(this.id)" type="date" id="retour" name="retour" ></label>
+
+            </li>
+            <li>
+                <label for="dejeuner">Petit-déjeuner<input onchange="filtre()" type="checkbox" id="dejeuner" name="Petit-déjeuner"></label>
+
+            </li>
+            <li>
+                <label for="animaux">Présence d'animaux<input onchange="filtre()" type="checkbox" id="animaux"></label>
+            </li>
+        </ul>
+
+        <input oninput="filtre()" type="search" id="search" placeholder="Où voulez-vous partir ?" />
+    </nav>
+
+
+    <div id=center>
+
+        <h1 id=decouvrez>Découvrez les meilleures destinations du moment : </h1>
+
+        <div id=rubrique>
+            <section class=souss>
+                <h2>Les pays incontournables</h2>
+                <ul>
+
+                    <li><a onclick="voyageselec(this.id)" href="Reservation.html?name=#pt" id=pt>Portugal</a></li>
+                    <li><a onclick="voyageselec(this.id)" href="Reservation.html?name=#it" id=it>Italie</a></li>
+                    <li><a onclick="voyageselec(this.id)" href="Reservation.html?name=#ir" id=ir>Irlande</a></li>
+                    <li><a onclick="voyageselec(this.id)" href="Reservation.html?name=#jp" id=jp>Japon</a></li>
+                    <li><a onclick="voyageselec(this.id)" href="Reservation.html?name=#us" id=us>Etats-Unis</a></li>
+                    <li><a onclick="voyageselec(this.id)" href="Reservation.html?name=#es" id=es>Espagne</a></li>
+                </ul>
+            </section>
+
+            <section class=souss>
+                <h2>Les villes incontournables</h2>
+                <ul>
+                    <li><a onclick="voyageselec(this.id)" href="Reservation.html?name=#lis" id=lis>Lisbonne</a></li>
+                    <li><a onclick="voyageselec(this.id)" href="Reservation.html?name=#lon" id=lon>Londres</a></li>
+                    <li><a onclick="voyageselec(this.id)" href="Reservation.html?name=#dub" id=dub>Dublin</a></li>
+                    <li><a onclick="voyageselec(this.id)" href="Reservation.html?name=#nyc" id=nyc>New York</a></li>
+                    <li><a onclick="voyageselec(this.id)" href="Reservation.html?name=#sin" id=sin>Singapour</a></li>
+                    <li><a onclick="voyageselec(this.id)" href="Reservation.html?name=#par" id=par>Paris</a></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div id=fleche><a href="#haut">↑</a></div>
+
+
+
+    <footer>
+        <a href="Contact.html">À propos & Contact</a>
+    </footer>
+
+
+</body>
+
+</html>
