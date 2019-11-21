@@ -33,11 +33,7 @@ function createvoyages() {
         document.getElementById(i).style.backgroundImage = "url(" + destinations[i][6] + ")";
     }
 }
-function createvoyages() {
-    for (var i in destinations) {
-        document.getElementById(i).style.backgroundImage = "url(" + destinations[i][6] + ")";
-    }
-}
+
 
 function datesok(lequel) {
     now = new Date();
