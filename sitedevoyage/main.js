@@ -122,6 +122,11 @@ function doublefonction3(lequel) {
     prixsejour();
 }
 
+function doublefonction4() {
+    createvoyages();
+    appliquerMeteo();
+}
+
 function monFiltre(depart, arrive, dej, animaux) {
     this.depart = depart;
     this.retour = arrive;
@@ -133,7 +138,7 @@ function voyageselec(dest) {
     var dest = dest; /* inutile */
     var filtreuser = new monFiltre(document.getElementById("depart").value, document.getElementById("retour").value, document.getElementById("dejeuner").checked, document.getElementById("animaux").checked);
     window.localStorage.setItem("filtre", JSON.stringify(filtreuser));
-    alert(JSON.stringify(filtreuser));
+
 
 }
 
@@ -158,4 +163,12 @@ function meteo(id) {
             document.getElementById(id).innerHTML += ' ' + temperature + ' °C';
         })
 
+}
+function appliquerMeteo() {
+
+    for (var i in destinations) {
+        if (destinations[i][7] != 0) {
+            meteo(i)
+        }
+        }
 }
