@@ -33,7 +33,11 @@ function createvoyages() {
         document.getElementById(i).style.backgroundImage = "url(" + destinations[i][6] + ")";
     }
 }
-
+function createvoyages() {
+    for (var i in destinations) {
+        document.getElementById(i).style.backgroundImage = "url(" + destinations[i][6] + ")";
+    }
+}
 
 function datesok(lequel) {
     now = new Date();
@@ -136,11 +140,12 @@ function meteo(id) {
     .then(function(resp) {return resp.json()})
     .then (function(data) {
         var temperature = Math.round(parseFloat(data.main.temp)-273.15);
-        document.getElementById(id)='bonjour';
+        document.getElementById(id).innerHTML +=' '+ temperature+' °C';
     })
 
 }
 onload = meteo("lis")
+
 
 let template = document.getElementById(listepays);
 for (const i of destinations) {
