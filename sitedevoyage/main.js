@@ -102,6 +102,11 @@ function doublefonction3(lequel) {
     prixsejour();
 }
 
+function doublefonction4() {
+    createvoyages();
+    appliquerMeteo();
+}
+
 function monFiltre(depart, arrive, dej, animaux) {
     this.depart = depart;
     this.retour = arrive;
@@ -111,15 +116,9 @@ function monFiltre(depart, arrive, dej, animaux) {
 
 function voyageselec(dest) {
     var dest = dest; /* inutile pour le moment */
-    /*var filtreuser = {
-    depart : document.getElementById("depart").value,
-    retour : document.getElementById("retour").value,
-    dejeuner : document.getElementById("dejeuner").checked,
-    animaux : document.getElementById("animaux").checked
-    };*/
     var filtreuser = new monFiltre(document.getElementById("depart").value, document.getElementById("retour").value, document.getElementById("dejeuner").checked, document.getElementById("animaux").checked);
     window.localStorage.setItem("filtre", JSON.stringify(filtreuser));
-    alert(JSON.stringify(filtreuser));
+
 
 }
 
@@ -144,8 +143,17 @@ function meteo(id) {
     })
 
 }
-onload = meteo("lis")
 
+function appliquerMeteo() {
+
+    for (var i in destinations) {
+        if (destinations[i][7] != 0) {
+            meteo(i)
+        }
+        }
+}
+
+/*
 
 let template = document.getElementById(listepays);
 for (const i of destinations) {
@@ -161,3 +169,4 @@ for (const i of destinations) {
         document.body.appendChild(clone); // On ajoute le clone créé
     }
 }
+*/
