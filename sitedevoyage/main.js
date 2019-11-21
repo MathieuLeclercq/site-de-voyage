@@ -1,16 +1,16 @@
 ﻿var destinations = {
-    "pt": ["Portugal", 200, true, true, false, true, "images/portugal.jpg",0],
-    "it": ["Italie", 100, true, true, true, false, "images/italie.jpg",0],
-    "ir": ["Irlande", 300, true, true, true, true, "images/ireland.jpg",0],
-    "jp": ["Japon", 800, true, true, false, false, "images/japon.jpg",0],
-    "us": ["Etats-Unis", 1100, true, true, false, true, "images/usa.PNG",0],
-    "es": ["Espagne", 50, true, true, true, false, "images/espagne.jpg",0],
-    "lis": ["Lisbonne", 200, true, true, false, false, "images/Lisbonne.jpg",2267057],
-    "lon": ["Londres", 500, true, true, true, false, "images/londres.jpeg",2643743],
-    "dub": ["Dublin", 400, true, true, false, true, "images/dublin.jpg",2964574],
-    "nyc": ["New York", 1100, true, true, true, true, "images/New-York.jpg",5128581],
-    "sin": ["Singapour", 800, true, true, false, false, "images/singapour.jpg",1880252],
-    "par": ["Paris", 50, true, true, false, false, "images/paris.jpeg",2988507]
+    "pt": ["Portugal", 200, true, true, false, true, "images/portugal.jpg", 0],
+    "it": ["Italie", 100, true, true, true, false, "images/italie.jpg", 0],
+    "ir": ["Irlande", 300, true, true, true, true, "images/ireland.jpg", 0],
+    "jp": ["Japon", 800, true, true, false, false, "images/japon.jpg", 0],
+    "us": ["Etats-Unis", 1100, true, true, false, true, "images/usa.PNG", 0],
+    "es": ["Espagne", 50, true, true, true, false, "images/espagne.jpg", 0],
+    "lis": ["Lisbonne", 200, true, true, false, false, "images/Lisbonne.jpg", 2267057],
+    "lon": ["Londres", 500, true, true, true, false, "images/londres.jpeg", 2643743],
+    "dub": ["Dublin", 400, true, true, false, true, "images/dublin.jpg", 2964574],
+    "nyc": ["New York", 1100, true, true, true, true, "images/New-York.jpg", 5128581],
+    "sin": ["Singapour", 800, true, true, false, false, "images/singapour.jpg", 1880252],
+    "par": ["Paris", 50, true, true, false, false, "images/paris.jpeg", 2988507]
 };
 
 function filtre() {
@@ -29,11 +29,35 @@ function filtre() {
 }
 
 function createvoyages() {
+    let template = document.getElementById("listepays");
+    let template2 = document.getElementById("listevilles");
+    for (var i in destinations) {
+        if (destinations[i][7] == 0) {
+            let clone = document.importNode(template.content, true);
+
+            newContent = clone.firstElementChild.innerHTML.replace(/{{iddest}}/g, i).replace(/{{dest}}/g, destinations[i][0]);
+
+            clone.firstElementChild.innerHTML = newContent
+
+            document.getElementById("ulpays").appendChild(clone);
+
+        } else if (destinations[i][7] != 0) {
+            let clone = document.importNode(template2.content, true);
+
+            newContent = clone.firstElementChild.innerHTML
+                .replace(/{{iddest}}/g, i)
+                .replace(/{{dest}}/g, destinations[i][0]);
+
+            clone.firstElementChild.innerHTML = newContent
+
+            document.getElementById("ulvilles").appendChild(clone);
+        }
+    }
+
     for (var i in destinations) {
         document.getElementById(i).style.backgroundImage = "url(" + destinations[i][6] + ")";
     }
 }
-
 
 function datesok(lequel) {
     now = new Date();
@@ -98,11 +122,6 @@ function doublefonction3(lequel) {
     prixsejour();
 }
 
-function doublefonction4() {
-    createvoyages();
-    appliquerMeteo();
-}
-
 function monFiltre(depart, arrive, dej, animaux) {
     this.depart = depart;
     this.retour = arrive;
@@ -111,10 +130,10 @@ function monFiltre(depart, arrive, dej, animaux) {
 }
 
 function voyageselec(dest) {
-    var dest = dest; /* inutile pour le moment */
+    var dest = dest; /* inutile */
     var filtreuser = new monFiltre(document.getElementById("depart").value, document.getElementById("retour").value, document.getElementById("dejeuner").checked, document.getElementById("animaux").checked);
     window.localStorage.setItem("filtre", JSON.stringify(filtreuser));
-
+    alert(JSON.stringify(filtreuser));
 
 }
 
@@ -130,39 +149,13 @@ function d() {
 
 
 }
+
 function meteo(id) {
-    fetch("http://api.openweathermap.org/data/2.5/weather?id="+destinations[id][7]+"&appid=53abf0667a0c2625fd059b88b10e51f7")
-    .then(function(resp) {return resp.json()})
-    .then (function(data) {
-        var temperature = Math.round(parseFloat(data.main.temp)-273.15);
-        document.getElementById(id).innerHTML +=' '+ temperature+' °C';
-    })
+    fetch("http://api.openweathermap.org/data/2.5/weather?id=" + destinations[id][7] + "&appid=53abf0667a0c2625fd059b88b10e51f7")
+        .then(function(resp) { return resp.json() })
+        .then(function(data) {
+            var temperature = Math.round(parseFloat(data.main.temp) - 273.15);
+            document.getElementById(id).innerHTML += ' ' + temperature + ' °C';
+        })
 
 }
-
-function appliquerMeteo() {
-
-    for (var i in destinations) {
-        if (destinations[i][7] != 0) {
-            meteo(i)
-        }
-        }
-}
-
-/*
-
-let template = document.getElementById(listepays);
-for (const i of destinations) {
-    if (destinations[i][6] = 0) { // itère sur le tableau
-        let clone = document.importNode(template.content, true); // clone le template
-
-        newContent = clone.firstElementChild.innerHTML // remplace {{modèle}}
-            .replace(/{{iddest}}/g, destination[i]) // et {{couleur}} par
-            .replace(/{{dest}}/g, v.couleur); // leur valeur
-
-        clone.firstElementChild.innerHTML = newContent
-
-        document.body.appendChild(clone); // On ajoute le clone créé
-    }
-}
-*/

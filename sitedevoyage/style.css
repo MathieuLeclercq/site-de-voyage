@@ -73,13 +73,6 @@
     #center {
         flex: 1;
     }
-
-    #centerresa {
-        flex: 1;
-        width: 40%;
-        margin-left: 30%;
-    }
-
     
     .souss {
         border-radius: 45px 45px 0px 0px;
@@ -110,7 +103,7 @@
     }
     
     header {
-        min-height: 54px;
+        min-height: 60px;
         display: flex;
         background-color: rgb(28, 138, 219);
         padding: 0;
