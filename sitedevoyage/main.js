@@ -136,10 +136,10 @@ function meteo(id) {
     .then(function(resp) {return resp.json()})
     .then (function(data) {
         var temperature = Math.round(parseFloat(data.main.temp)-273.15);
-        alert(temperature)
+        document.getElementById(id)='bonjour';
     })
 
 }
-alert(des)
+onload = meteo("lis")
 
 
