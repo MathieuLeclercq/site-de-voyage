@@ -1,4 +1,4 @@
-﻿var destinations = {
+﻿var destinations = {  // Stockage des informations sur les destinations
     "pt": ["Portugal", 200, true, true, false, true, "images/portugal.jpg", 0],
     "it": ["Italie", 100, true, true, true, false, "images/italie.jpg", 0],
     "ir": ["Irlande", 300, true, true, true, true, "images/ireland.jpg", 0],
@@ -13,7 +13,9 @@
     "par": ["Paris", 50, true, true, false, false, "images/paris.jpeg", 2988507]
 };
 
-function filtre() {
+function filtre() {  // Permet de griser les destinations incompatibles avec les choix rentrés dans la barre de navigation :
+                    // prix max, dispo des dates, présence de petit dej, présence d'animaux.
+                   // On filtre aussi selon la saisie dans la barre de recherche.
 
     for (var i in destinations) {
         if (!(destinations[i][0].toLowerCase().startsWith(document.getElementById("search").value.toLowerCase())) || (document.getElementById("prix").value < destinations[i][1]) || ((document.getElementById("dejeuner").checked) && (destinations[i][4] == false)) || ((document.getElementById("animaux").checked) && (destinations[i][5] == false))) {
@@ -28,38 +30,33 @@ function filtre() {
 
 }
 
-function createvoyages() {
+function createvoyages() {   // Affiche les destinations dynamiquement sur la page d'accueil suivant le template
     let template = document.getElementById("listepays");
     let template2 = document.getElementById("listevilles");
     for (var i in destinations) {
-        if (destinations[i][7] == 0) {
+        if (destinations[i][7] == 0) {   // On s'occupe ici des pays
             let clone = document.importNode(template.content, true);
-
             newContent = clone.firstElementChild.innerHTML.replace(/{{iddest}}/g, i).replace(/{{dest}}/g, destinations[i][0]);
-
             clone.firstElementChild.innerHTML = newContent
-
             document.getElementById("ulpays").appendChild(clone);
 
-        } else if (destinations[i][7] != 0) {
+        } else if (destinations[i][7] != 0) {  // On s'occupe ici des villes
             let clone = document.importNode(template2.content, true);
-
             newContent = clone.firstElementChild.innerHTML
                 .replace(/{{iddest}}/g, i)
                 .replace(/{{dest}}/g, destinations[i][0]);
-
             clone.firstElementChild.innerHTML = newContent
-
             document.getElementById("ulvilles").appendChild(clone);
         }
     }
 
-    for (var i in destinations) {
+    for (var i in destinations) {  // On récupère l'image correspondant à chaque destination
         document.getElementById(i).style.backgroundImage = "url(" + destinations[i][6] + ")";
     }
 }
 
-function datesok(lequel) {
+function datesok(lequel) {  // fonction qui n'autorise la saisie que de dates valides :
+                           // pas de dates antérieures à aujourd'hui, et le retour doit être ultérieur au départ.
     now = new Date();
     if ((now.getTime() - now.getTime() % 86400000) > new Date(document.getElementById("depart").value).getTime()) {
         document.getElementById("depart").value = "";
@@ -77,7 +74,7 @@ function datesok(lequel) {
 
 
 
-function prixsejour() {
+function prixsejour() { // Calcule le prix du séjour en temps réel, suivant les valeurs saisies dans le formulaire de réservation.
     var pays = window.location.hash.substr(1);
     var nbEnfants = Number(document.getElementById("enfants").value);
     var nbAdultes = Number(document.getElementById("adultes").value);
@@ -107,25 +104,26 @@ function nombreok(lequel) {
 }
 
 
-function doublefonction(lequel) {
+function doublefonction(lequel) {   // Permet d'appeler plusieurs fonctions en une fois
     datesok(lequel);
     prixsejour();
 }
 
-function doublefonction2(lequel) {
+function doublefonction2(lequel) { // Permet d'appeler plusieurs fonctions en une fois
     datesok(lequel);
     filtre();
 }
 
-function doublefonction3(lequel) {
+function doublefonction3(lequel) { // Permet d'appeler plusieurs fonctions en une fois
     nombreok(lequel);
     prixsejour();
 }
 
-function doublefonction4() {
+function doublefonction4() {     // Permet d'appeler plusieurs fonctions en une fois
     createvoyages();
     appliquerMeteo();
 }
+
 
 function monFiltre(depart, arrive, dej, animaux) {
     this.depart = depart;
@@ -149,13 +147,13 @@ function d() {
 
     document.getElementById("depart").value = filtreuser.depart;
     document.getElementById("retour").value = filtreuser.retour;
-    document.getElementById("dej").checked = filtreuser.dejeuner; /* bloquer petit dej à decoché si impossible d'en prendre un */
-    document.getElementById("animal").checked = filtreuser.animaux; /* bloquer animaux à decoché si impossible d'en prendre un */
+    document.getElementById("dej").checked = filtreuser.dejeuner; /* bloquer petit dej à decocher si impossible d'en prendre un */
+    document.getElementById("animal").checked = filtreuser.animaux; /* bloquer animaux à decocher si impossible d'en prendre un */
 
 
 }
 
-function meteo(id) {
+function meteo(id) {   // Récupération des données de météo 
     fetch("http://api.openweathermap.org/data/2.5/weather?id=" + destinations[id][7] + "&appid=53abf0667a0c2625fd059b88b10e51f7")
         .then(function(resp) { return resp.json() })
         .then(function(data) {
@@ -164,7 +162,7 @@ function meteo(id) {
         })
 
 }
-function appliquerMeteo() {
+function appliquerMeteo() { // Affichage de la météo sur toutes les villes, et pas les pays
 
     for (var i in destinations) {
         if (destinations[i][7] != 0) {
