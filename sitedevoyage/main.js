@@ -130,7 +130,6 @@ function d() {
     document.getElementById("animal").checked = filtreuser.animaux; /* bloquer animaux à decoché si impossible d'en prendre un */
 
 
-<<<<<<< HEAD
 }
 
 fetch("http://api.openweathermap.org/data/2.5/weather?id=2267057&appid=53abf0667a0c2625fd059b88b10e51f7")
@@ -138,6 +137,4 @@ fetch("http://api.openweathermap.org/data/2.5/weather?id=2267057&appid=53abf0667
 .then (function(data) {
     console.log(data)
 })
-=======
 }
->>>>>>> c316443758ed85013c58862291e5bb3dac0ea37e
