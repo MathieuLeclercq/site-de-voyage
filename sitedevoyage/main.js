@@ -1,41 +1,47 @@
 ﻿var destinations = {
-    "pt": ["Portugal", 200, true, true, false, true],
-    "it": ["Italie", 100, true, true, true, false],
-    "ir": ["Irlande", 300, true, true, true, true],
-    "jp": ["Japon", 800, true, true, false, false],
-    "us": ["Etats-Unis", 1100, true, true, false, true],
-    "es": ["Espagne", 50, true, true, true, false],
-    "lis": ["Lisbonne", 200, true, true, false, false],
-    "lon": ["Londres", 500, true, true, true, false],
-    "dub": ["Dublin", 400, true, true, false, true],
-    "nyc": ["New York", 1100, true, true, true, true],
-    "sin": ["Singapour", 800, true, true, false, false],
-    "par": ["Paris", 50, true, true, false, false]
+    "pt": ["Portugal", 200, true, true, false, true, "images/portugal.jpg"],
+    "it": ["Italie", 100, true, true, true, false, "images/italie.jpg"],
+    "ir": ["Irlande", 300, true, true, true, true, "images/ireland.jpg"],
+    "jp": ["Japon", 800, true, true, false, false, "images/japon.jpg"],
+    "us": ["Etats-Unis", 1100, true, true, false, true, "images/usa.PNG"],
+    "es": ["Espagne", 50, true, true, true, false, "images/espagne.jpg"],
+    "lis": ["Lisbonne", 200, true, true, false, false, "images/Lisbonne.jpg"],
+    "lon": ["Londres", 500, true, true, true, false, "images/londres.jpeg"],
+    "dub": ["Dublin", 400, true, true, false, true, "images/dublin.jpg"],
+    "nyc": ["New York", 1100, true, true, true, true, "images/New-York.jpg"],
+    "sin": ["Singapour", 800, true, true, false, false, "images/singapour.jpg"],
+    "par": ["Paris", 50, true, true, false, false, "images/paris.jpeg"]
 };
 
 function filtre() {
-    
-    for (var i in destinations) {
-        if ( !(destinations[i][0].toLowerCase().startsWith(document.getElementById("search").value.toLowerCase())) || (document.getElementById("prix").value < destinations[i][1]) || ((document.getElementById("dejeuner").checked) && (destinations[i][4] == false)) || ((document.getElementById("animaux").checked) && (destinations[i][5] == false)))  {
-                document.getElementById(i).style.opacity = "0.30";
-                document.getElementById(i).removeAttribute("href");
-            } else {
-                document.getElementById(i).style.opacity = "1.00";
-                document.getElementById(i).href = "Reservation.html?name=#"+i;
-            }
 
+    for (var i in destinations) {
+        if (!(destinations[i][0].toLowerCase().startsWith(document.getElementById("search").value.toLowerCase())) || (document.getElementById("prix").value < destinations[i][1]) || ((document.getElementById("dejeuner").checked) && (destinations[i][4] == false)) || ((document.getElementById("animaux").checked) && (destinations[i][5] == false))) {
+            document.getElementById(i).style.opacity = "0.30";
+            document.getElementById(i).removeAttribute("href");
+        } else {
+            document.getElementById(i).style.opacity = "1.00";
+            document.getElementById(i).href = "Reservation.html?name=#" + i;
         }
 
     }
 
+}
+
+function createvoyages() {
+    for (var i in destinations) {
+        document.getElementById(i).style.backgroundImage = "url(" + destinations[i][6] + ")";
+    }
+}
+
 
 function datesok(lequel) {
     now = new Date();
-    if ((now.getTime() - now.getTime()%86400000) > new Date(document.getElementById("depart").value).getTime()) {
+    if ((now.getTime() - now.getTime() % 86400000) > new Date(document.getElementById("depart").value).getTime()) {
         document.getElementById("depart").value = "";
         alert("veuillez choisir une date valide");
     }
-    if ((now.getTime() - now.getTime()%86400000) >= new Date(document.getElementById("retour").value).getTime()) {
+    if ((now.getTime() - now.getTime() % 86400000) >= new Date(document.getElementById("retour").value).getTime()) {
         document.getElementById("retour").value = "";
         alert("veuillez choisir une date valide");
     }
@@ -52,18 +58,18 @@ function prixsejour() {
     var nbEnfants = Number(document.getElementById("enfants").value);
     var nbAdultes = Number(document.getElementById("adultes").value);
 
-    var dateDepart = new Date(document.getElementById("depart").value);    
+    var dateDepart = new Date(document.getElementById("depart").value);
     var dateRetour = new Date(document.getElementById("retour").value);
-    nbNuits = (dateRetour-dateDepart)/(1000*3600*24);
+    nbNuits = (dateRetour - dateDepart) / (1000 * 3600 * 24);
     var dej = Number(document.getElementById("dej").checked);
     var prixNuit = Number(destinations[pays][1]);
-    var prix = Math.round(nbNuits*(nbAdultes + 0.4*nbEnfants)*(prixNuit+12*dej)*100)/100;
+    var prix = Math.round(nbNuits * (nbAdultes + 0.4 * nbEnfants) * (prixNuit + 12 * dej) * 100) / 100;
     if (prix > 0) {
         document.getElementById("prix").innerHTML = prix;
     } else {
         document.getElementById("prix").innerHTML = "0";
     }
-    
+
 }
 
 function nombreok(lequel) {
@@ -92,7 +98,7 @@ function doublefonction3(lequel) {
     prixsejour();
 }
 
-function monFiltre(depart,arrive,dej,animaux) {
+function monFiltre(depart, arrive, dej, animaux) {
     this.depart = depart;
     this.retour = arrive;
     this.dejeuner = dej;
@@ -107,10 +113,10 @@ function voyageselec(dest) {
     dejeuner : document.getElementById("dejeuner").checked,
     animaux : document.getElementById("animaux").checked
     };*/
-    var filtreuser = new monFiltre(document.getElementById("depart").value,document.getElementById("retour").value,document.getElementById("dejeuner").checked,document.getElementById("animaux").checked);
-    window.localStorage.setItem("filtre",JSON.stringify(filtreuser));
+    var filtreuser = new monFiltre(document.getElementById("depart").value, document.getElementById("retour").value, document.getElementById("dejeuner").checked, document.getElementById("animaux").checked);
+    window.localStorage.setItem("filtre", JSON.stringify(filtreuser));
     alert(JSON.stringify(filtreuser));
-    
+
 }
 
 function d() {
@@ -125,6 +131,3 @@ function d() {
 
 
 }
-
-
-

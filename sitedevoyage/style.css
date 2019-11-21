@@ -1,7 +1,7 @@
     #decouvrez {
         text-align: center;
     }
-
+    
     html {
         margin: 0;
         padding: 0;
@@ -17,17 +17,17 @@
         flex-direction: column;
         height: 100%;
     }
-
+    
     a.contact {
-        color : black;
+        color: black;
     }
-
+    
     a.contact:link,
     a.contact:visited {
         text-decoration: none;
         color: black;
     }
-
+    
     li {
         list-style-type: none;
         color: #fff;
@@ -61,7 +61,7 @@
         margin-left: 5%;
         width: 90%;
         height: 40px;
-        box-shadow:1px 1px 3px #aaa;
+        box-shadow: 1px 1px 3px #aaa;
     }
     
     #rubrique {
@@ -69,13 +69,11 @@
         flex-wrap: wrap;
         justify-content: space-around;
     }
-
+    
     #center {
         flex: 1;
     }
-
-
-
+    
     .souss {
         border-radius: 45px 45px 0px 0px;
         text-align: center;
@@ -85,8 +83,6 @@
         box-shadow: 0px 1px 2px 1px #aaa;
     }
     
-
-
     .souss ul {
         display: flex;
         flex-wrap: wrap;
@@ -94,21 +90,20 @@
         padding: 0;
         margin: 0;
         background-color: white;
-
     }
     
     .souss>ul>li {
         width: 50%;
         padding: 0;
         margin: 0;
-
-
-
     }
+    
     a>img {
         width: 100%;
     }
+    
     header {
+        min-height: 54px;
         display: flex;
         background-color: rgb(28, 138, 219);
         padding: 0;
@@ -116,7 +111,7 @@
         justify-content: space-between;
         z-index: 1;
     }
-
+    
     footer {
         display: flex;
         background-color: rgb(28, 138, 219);
@@ -128,24 +123,22 @@
     }
     
     footer>a {
-        
-        margin:0;
+        margin: 0;
         padding-top: 10px;
         padding-bottom: 13px;
         padding-left: 3px;
         padding-right: 3px;
     }
-
+    
     footer>a:hover {
-        
-        margin:0;
+        margin: 0;
         padding-top: 10px;
         padding-bottom: 13px;
         background-color: white;
         color: rgb(28, 138, 219);
         transition-delay: 100ms;
     }
-
+    
     #fleche {
         display: flex;
         position: fixed;
@@ -153,10 +146,9 @@
         padding: 0;
         margin: 0;
         justify-content: center;
-
     }
-
-    #fleche> a {
+    
+    #fleche>a {
         background-color: rgb(28, 139, 219);
         box-shadow: 0px 0px 1px 0px #aaa;
         font-size: xx-large;
@@ -167,7 +159,7 @@
         padding-bottom: 5px;
         border-radius: 50%;
     }
-
+    
     #fleche>a:hover {
         background-color: rgb(28, 158, 219);
         transition-delay: 100ms;
@@ -178,10 +170,10 @@
         padding: 0;
         background-color: inherit;
     }
-
+    
     header>ul>li {
         padding: 0;
-    } 
+    }
     
     header>ul>li>a {
         display: flex;
@@ -190,128 +182,63 @@
         padding: 0;
         margin: 0;
     }
-
+    
     #panier {
         background-image: url("panier.png");
-        background-size:100%;
+        background-size: 100%;
         width: 50px;
         padding-bottom: 44%;
         background-repeat: no-repeat;
     }
-
+    
     #login {
         background-image: url("login.png");
-        background-size:100%;
+        background-size: 100%;
         width: 50px;
         padding-bottom: 44%;
         background-repeat: no-repeat;
     }
-        
+    
     .souss>ul>li>a {
         display: flex;
-        background-size:100%;
+        background-size: 100%;
         width: 100%;
         padding-bottom: 44%;
         background-repeat: no-repeat;
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
-
-    nav{
+    
+    nav {
         width: 100%;
         margin: 0;
         padding: 0;
         margin-bottom: 7px;
     }
-
-
+    
     nav>ul {
         display: flex;
         justify-content: center;
         box-shadow: 0px 0px 12px 1px #aaa;
         margin-top: 0;
-        padding: 0;  
-      }
-
-      @media all and (min-width: 1025px) and (max-width: 1500px)
-      {
-          #rubrique
-          {
-              flex-direction: column;
-              align-items: center;
-
-          }
-
-          .souss
-          {
+        padding: 0;
+    }
+    
+    @media all and (min-width: 1025px) and (max-width: 1500px) {
+        #rubrique {
+            flex-direction: column;
+            align-items: center;
+        }
+        .souss {
             width: 70%;
-          }
-      }
-
-      @media all and (max-width: 1024px)
-      {
-          #rubrique
-          {
-              flex-direction: column;
-
-          }
-
-          .souss
-          {
-            border-radius: 0px ;
+        }
+    }
+    
+    @media all and (max-width: 1024px) {
+        #rubrique {
+            flex-direction: column;
+        }
+        .souss {
+            border-radius: 0px;
             width: 100%;
-          }
-      }
-
-
-
-    
-
-    #pt {
-        background-image: url("images/portugal.jpg");        
+        }
     }
-    
-    #it {
-        background-image: url("images/italie.jpg");
-    }
-    
-    #ir {
-        background-image: url("images/ireland.jpg");
-    }
-    
-    #jp {
-        background-image: url("images/japon.jpg");
-    }
-    
-    #us {
-        background-image: url("images/usa.PNG");
-    }
-    
-    #es {
-        background-image: url("images/espagne.jpg");
-    }
-    
-    #lis {
-        background-image: url("images/Lisbonne.jpg");
-    }
-    
-    #lon {
-        background-image: url("images/londres.jpeg");
-    }
-    
-    #dub {
-        background-image: url("images/dublin.jpg");
-    }
-    
-    #nyc {
-        background-image: url("images/New-York.jpg");
-    }
-    
-    #sin {
-        background-image: url("images/singapour.jpg");
-    }
-    
-    #par {
-        background-image: url("images/paris.jpeg");
-    }
-
-
