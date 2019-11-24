@@ -19,11 +19,16 @@ function filtre() {  // Permet de griser les destinations incompatibles avec les
 
     for (var i in destinations) {
         if (!(destinations[i][0].toLowerCase().startsWith(document.getElementById("search").value.toLowerCase())) || (document.getElementById("prix").value < destinations[i][1]) || ((document.getElementById("dejeuner").checked) && (destinations[i][4] == false)) || ((document.getElementById("animaux").checked) && (destinations[i][5] == false))) {
-            document.getElementById(i).style.opacity = "0.30";
-            document.getElementById(i).removeAttribute("href");
+            /*document.getElementById(i).style.opacity = "0.30";
+            document.getElementById(i).removeAttribute("href");*/
+
+            document.getElementById(i).parentNode.style.display = "None";
+            
         } else {
-            document.getElementById(i).style.opacity = "1.00";
-            document.getElementById(i).href = "Reservation.html?name=#" + i;
+            /*document.getElementById(i).style.opacity = "1.00";
+            document.getElementById(i).href = "Reservation.html?name=#" + i;*/
+
+            document.getElementById(i).parentNode.style.display = "flex";
         }
 
     }
@@ -36,15 +41,13 @@ function createvoyages() {   // Affiche les destinations dynamiquement sur la pa
     for (var i in destinations) {
         if (destinations[i][7] == 0) {   // On s'occupe ici des pays
             let clone = document.importNode(template.content, true);
-            newContent = clone.firstElementChild.innerHTML.replace(/{{iddest}}/g, i).replace(/{{dest}}/g, destinations[i][0]);
+            newContent = clone.firstElementChild.innerHTML.replace(/{{iddest}}/g, i).replace(/{{iddest2}}/g, i).replace(/{{dest}}/g, destinations[i][0]);
             clone.firstElementChild.innerHTML = newContent
             document.getElementById("ulpays").appendChild(clone);
 
         } else if (destinations[i][7] != 0) {  // On s'occupe ici des villes
             let clone = document.importNode(template2.content, true);
-            newContent = clone.firstElementChild.innerHTML
-                .replace(/{{iddest}}/g, i)
-                .replace(/{{dest}}/g, destinations[i][0]);
+            newContent = clone.firstElementChild.innerHTML.replace(/{{iddest}}/g, i).replace(/{{iddest2}}/g, i).replace(/{{dest}}/g, destinations[i][0]);
             clone.firstElementChild.innerHTML = newContent
             document.getElementById("ulvilles").appendChild(clone);
         }
