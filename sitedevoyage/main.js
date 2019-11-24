@@ -13,6 +13,9 @@
     "par": ["Paris", 50, true, true, false, false, "images/paris.jpeg", 2988507]
 };
 
+
+  
+
 function filtre() {  // Permet de griser les destinations incompatibles avec les choix rentrés dans la barre de navigation :
                     // prix max, dispo des dates, présence de petit dej, présence d'animaux.
                    // On filtre aussi selon la saisie dans la barre de recherche.
@@ -105,6 +108,38 @@ function nombreok(lequel) {
     }
 
 }
+
+window.addEventListener("scroll", function(){
+ 
+    let objNav = document.querySelector("nav");
+    // on mémorise la position de nav
+    let memoPositionNav = objNav.offsetTop;
+    // position du curseur au scroll
+    var posCurseur = this.pageYOffset;
+    // je teste la différence de distance entre le scroll et nav
+    if(memoPositionNav-posCurseur< 1){
+        objNav.style.position = "fixed";
+        objNav.style.top = 0;
+        document.getElementById("search").style.display = "none";
+        document.getElementById("center").style.marginTop = String(document.querySelector("nav").clientHeight + 15)+"px";
+        document.getElementById("fleche").style.visibility = "visible";
+    
+
+    }
+    if(posCurseur<56){
+        objNav.style.position = "relative";
+        document.getElementById("search").style.display = "flex";
+        document.getElementById("center").style.marginTop = "0";
+        document.getElementById("fleche").style.visibility = "hidden";
+    }
+    if(this.pageYOffset + window.innerHeight >= document.querySelector("footer").offsetTop){
+        document.getElementById("fleche").style.bottom = String(this.pageYOffset + window.innerHeight - document.querySelector("footer").offsetTop + 15) + "px"
+    }
+
+});
+
+
+
 
 
 function doublefonction(lequel) {   // Permet d'appeler plusieurs fonctions en une fois
