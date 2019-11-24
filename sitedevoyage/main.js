@@ -110,8 +110,7 @@ function nombreok(lequel) {
 }
 
 window.addEventListener("scroll", function(){
- 
-    let objNav = document.querySelector("nav");
+    let objNav = document.getElementById("navfil");
     // on mémorise la position de nav
     let memoPositionNav = objNav.offsetTop;
     // position du curseur au scroll
@@ -120,17 +119,17 @@ window.addEventListener("scroll", function(){
     if(memoPositionNav-posCurseur< 1){
         objNav.style.position = "fixed";
         objNav.style.top = 0;
-        document.getElementById("search").style.display = "none";
-        document.getElementById("center").style.marginTop = String(document.querySelector("nav").clientHeight + 15)+"px";
+        /*document.getElementById("center").style.marginTop = String(document.getElementById("navfil").clientHeight + 15)+"px";*/
+        document.getElementById("search").style.marginTop = String(document.getElementById("navfil").clientHeight + 16)+"px"
         document.getElementById("fleche").style.visibility = "visible";
     
 
     }
     if(posCurseur<56){
         objNav.style.position = "relative";
-        document.getElementById("search").style.display = "flex";
         document.getElementById("center").style.marginTop = "0";
         document.getElementById("fleche").style.visibility = "hidden";
+        document.getElementById("search").style.marginTop = "16px"
     }
     if(this.pageYOffset + window.innerHeight >= document.querySelector("footer").offsetTop){
         document.getElementById("fleche").style.bottom = String(this.pageYOffset + window.innerHeight - document.querySelector("footer").offsetTop + 15) + "px"
@@ -158,6 +157,8 @@ function doublefonction3(lequel) { // Permet d'appeler plusieurs fonctions en un
 }
 
 function doublefonction4() {     // Permet d'appeler plusieurs fonctions en une fois
+    /*var now = new Date();    
+    document.getElementById("depart").setAttribute("min",now);*/
     createvoyages();
     appliquerMeteo();
 }
