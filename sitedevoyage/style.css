@@ -148,10 +148,12 @@
     #fleche {
         display: flex;
         position: fixed;
-        right: 15px;
+        right: 10px;
+        bottom: 15px;
         padding: 0;
         margin: 0;
         justify-content: center;
+        visibility: hidden;
     }
     
     #fleche>a {
@@ -193,7 +195,6 @@
         background-image: url("panier.png");
         background-size: 100%;
         width: 50px;
-        padding-bottom: 44%;
         background-repeat: no-repeat;
     }
     
@@ -201,7 +202,6 @@
         background-image: url("login.png");
         background-size: 100%;
         width: 50px;
-        padding-bottom: 44%;
         background-repeat: no-repeat;
     }
     
