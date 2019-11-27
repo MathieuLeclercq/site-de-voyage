@@ -13,7 +13,7 @@
     "par": ["Paris", 50, true, true, false, false, "images/paris.jpeg", 2988507]
 };*/
 
-var destinations = {}
+var destinations = {} // Stockage des informations sur les destinations qu'on va importer depuis le fichier pays.json
 fetch("pays.json").then(function(x){ return x.json();}).then(function(x){ destinations= x;})
 
   
