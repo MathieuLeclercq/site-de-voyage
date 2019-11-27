@@ -1,4 +1,4 @@
-﻿var destinations = {  // Stockage des informations sur les destinations
+﻿/*var destinations = {  // Stockage des informations sur les destinations
     "pt": ["Portugal", 200, true, true, false, true, "images/portugal.jpg", 0],
     "it": ["Italie", 100, true, true, true, false, "images/italie.jpg", 0],
     "ir": ["Irlande", 300, true, true, true, true, "images/ireland.jpg", 0],
@@ -11,8 +11,10 @@
     "nyc": ["New York", 1100, true, true, true, true, "images/New-York.jpg", 5128581],
     "sin": ["Singapour", 800, true, true, false, false, "images/singapour.jpg", 1880252],
     "par": ["Paris", 50, true, true, false, false, "images/paris.jpeg", 2988507]
-};
+};*/
 
+var destinations = {}
+fetch("pays.json").then(function(x){ return x.json();}).then(function(x){ destinations= x;})
 
   
 
