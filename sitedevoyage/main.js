@@ -326,10 +326,37 @@ if (window.location.pathname.substring(14,window.location.pathname.length-5) == 
 
 function envoiPanier() {
     
-    var strFormulaire = window.sessionStorage.getItem('itemVoyages');
-    console.log(strFormulaire);
+    lesVoyages.forEach(ajoutDuVoyage)
     bellepdp()
+}
 
+function ajoutDuVoyage(voyage){
+    var p = document.createElement("p");
+    var nom = 'Nom et prénom : ' +voyage[0];
+    var prenom = voyage[1];
+    var mail = 'mail du compte : ' +voyage[2];
+    var tel = 'numéro de téléphone : '+voyage [3];
+    var depart = 'Date de départ : '+voyage[4];
+    var retour = 'Date de retour : ' +voyage [5];
+    var nbAdultes = "Nombre d'adultes : "  +voyage[6];
+    var nbEnfants = "Nombre d'enfants : "  +voyage[7];
+    if (voyage[8] == true){
+        var dej = 'Petit-déjeuner : oui';
+    } else {
+        var dej = 'Petit-déjeuner : non';
+    }
+    if (voyage[9] == true){
+        var animaux = "Présence d'animaux : oui";
+    } else {
+        var animaux = "Présence d'animaux : non";
+    }
+    var commentaire = 'Commentaire supplémentaire : ' +[10];
+    var destination = 'destination : ' +voyage[11];
+    var prix = 'Prix du voyage : ' +voyage[12]+ ' €';
+
+
+    p.innerHTML = prix;
+    document.getElementById('tousVoyages').appendChild(p)
 
 
 }
