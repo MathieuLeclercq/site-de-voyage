@@ -191,25 +191,28 @@ function d() {
     document.getElementById("dej").checked = filtreuser.dejeuner; /* bloquer petit dej à decocher si impossible d'en prendre un */
     document.getElementById("animal").checked = filtreuser.animaux; /* bloquer animaux à decocher si impossible d'en prendre un */
 }
-document.getElementById('resa').addEventListener('submit',function(){
-    lForm = [];
-    for (var entree in document.forms["resa"].elements){
-        lForm.push(document.forms["resa"].elements[entree].value)
-    }
-    for (var i in [1,2,3,4,5,6,7,8]){
-        var pif=lForm.pop();
-    }
-    var petitDeJCheck = document.getElementById('dej').checked;
-    var animauxCheck = document.getElementById('animal').checked;
-    var renseignements = document.getElementById('renseignements').value;
-    lForm.push(petitDeJCheck);
-    lForm.push(animauxCheck);
-    lForm.push(renseignements);
-    var endroit = window.location.hash.substr(1);
-    lForm.push(endroit);
-    alert(lForm)
-    window.sessionStorage.setItem("formulaire",JSON.stringify(lForm));
-})
+if (window.location.pathname.substring(14,window.location.pathname.length-5) == "Reservation") {
+    document.getElementById('resa').addEventListener('submit',function(){
+        lForm = [];
+        for (var entree in document.forms["resa"].elements){
+            lForm.push(document.forms["resa"].elements[entree].value)
+        }
+        for (var i in [1,2,3,4,5,6,7,8]){
+            var pif=lForm.pop();
+        }
+        
+        var petitDeJCheck = document.getElementById('dej').checked;
+        var animauxCheck = document.getElementById('animal').checked;
+        var renseignements = document.getElementById('renseignements').value;
+        lForm.push(petitDeJCheck);
+        lForm.push(animauxCheck);
+        lForm.push(renseignements);
+        var endroit = window.location.hash.substr(1);
+        lForm.push(endroit);
+        alert(lForm)
+        window.sessionStorage.setItem("",JSON.stringify(lForm));
+    })
+}
 
 function envoiPanier() {
     var strFormulaire = window.sessionStorage.getItem('formulaire');
