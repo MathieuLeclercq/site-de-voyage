@@ -6,36 +6,34 @@
     <link rel="stylesheet" href="style.css" />
     <title>Braz'àville</title>
     <link rel="icon" href="logobrazaville.jpg" />
-    <script src="main.js"></script>
+    
     <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body onload="bellepdp()">
     <div id=haut></div>
 
 
     <header>
         <a href="homepage.html"><img alt="logo" src="logobrazaville.png" id=logo /></a>
-        <ul>
+        <ul id=panel>
             <li>
                 <a href="recapitulatif.html" id=panier></a>
             </li>
             <li>
                 <a id=login href="login.html"></a>
             </li>
-            <li>
-                <a href="register.html"></a>
-            </li>
         </ul>
     </header>
 
     <div id=center>
         <h1>Se connecter</h1>
-        <input type="email" placeholder="Adresse e-mail" /><br/>
-        <input type="password" placeholder="Mot de passe" /><br/>
-        <input type="submit" value="Valider" />
-        <input type="reset" value="Réinitialiser" />
-        <a href="register.html">Vous n'avez pas encore de compte ? Créez en un !</a>
+        <form id=loginform>
+            <input type="email" id=mail placeholder="Adresse e-mail" /><br/> <!-- mot de passe en clair dans le local storage mais bon-->
+            <input type="password" id=mdp placeholder="Mot de passe" /><br/>
+            <input type="submit" value="Valider" />
+            <input type="reset" value="Réinitialiser" />
+        </form>
         <p>Mot de passe oublié ? Contactez nous par mail dans l'onglet Contact !</p>
     </div>
 
@@ -51,5 +49,5 @@
 
 
 </body>
-
+<script src="main.js"></script>
 </html>
