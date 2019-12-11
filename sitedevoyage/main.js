@@ -13,6 +13,17 @@
     "par": ["Paris", 50, true, true, false, false, "images/paris.jpeg", 2988507]
 };*/
 
+ 
+  
+
+
+if (JSON.parse(sessionStorage.getItem("itemVoyages")) == null) {    // crée une liste uniquement si la liste des voyages est vide
+     var lesVoyages=[]
+    } else {
+        var lesVoyages = JSON.parse(sessionStorage.getItem("itemVoyages"))
+    }
+
+
 var destinations = {} // Stockage des informations sur les destinations qu'on va importer depuis le fichier pays.json
 fetch("pays.json").then(function(x){ return x.json();}).then(function(x){ destinations= x;})
 
@@ -191,6 +202,8 @@ function d() {
     document.getElementById("dej").checked = filtreuser.dejeuner; /* bloquer petit dej à decocher si impossible d'en prendre un */
     document.getElementById("animal").checked = filtreuser.animaux; /* bloquer animaux à decocher si impossible d'en prendre un */
 }
+
+
 if (window.location.pathname.substring(14,window.location.pathname.length-5) == "Reservation") {
     document.getElementById('resa').addEventListener('submit',function(){
         lForm = [];
@@ -204,18 +217,26 @@ if (window.location.pathname.substring(14,window.location.pathname.length-5) == 
         var petitDeJCheck = document.getElementById('dej').checked;
         var animauxCheck = document.getElementById('animal').checked;
         var renseignements = document.getElementById('renseignements').value;
+        var cout = document.getElementById("prix").innerHTML;
+        var endroit = window.location.hash.substr(1);
         lForm.push(petitDeJCheck);
         lForm.push(animauxCheck);
-        lForm.push(renseignements);
-        var endroit = window.location.hash.substr(1);
-        lForm.push(endroit);
-        alert(lForm)
-        window.sessionStorage.setItem("",JSON.stringify(lForm));
+        lForm.push(renseignements);        
+        lForm.push(endroit);        
+        lForm.push(cout);
+        alert(lForm);
+        alert(lesVoyages);
+        lesVoyages.push(lForm);
+        alert(lesVoyages);
+        sessionStorage.setItem('itemVoyages',JSON.stringify(lesVoyages));
     })
 }
 
+
+
+
 function envoiPanier() {
-    var strFormulaire = window.sessionStorage.getItem('formulaire');
+    var strFormulaire = window.sessionStorage.getItem('itemVoyages');
     console.log(strFormulaire);
 
 
