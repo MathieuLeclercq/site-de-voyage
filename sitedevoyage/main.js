@@ -328,7 +328,9 @@ if (window.location.pathname.substring(14,window.location.pathname.length-5) == 
 
 
 function envoiPanier() {
+    bellepdp()
     var strFormulaire = window.sessionStorage.getItem('itemVoyages');
+    
     console.log(strFormulaire);
 
 
