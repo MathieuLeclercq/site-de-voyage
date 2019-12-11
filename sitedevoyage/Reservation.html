@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="style.css" />
     <title>Braz'àville</title>
+    
+    <script src="main.js"></script>
     <link rel="icon" href="logobrazaville.jpg" />
     <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
 </head>
@@ -26,31 +28,33 @@
     </header>
 
     <div id=centerresa>
-        <h1>Réservation : <span id="voyageSelectionne"></span></h1>
+        <section class=souss2>
+            <h1>Réservation : <span id="voyageSelectionne"></span></h1>
 
-        <form id=resa  action="recapitulatif.html" >
-            <input required name="nom" type="text" placeholder="Nom*" /><br/>
-            <input required name="prenom" type="text" placeholder="Prénom*" /><br/>
-            <input required name="email" type="email" placeholder="e-mail*" /><br/>
-            <input name="tel" type="tel" placeholder="Téléphone" /><br/>
-            <label>Du : <input onchange ="doublefonction(this.id)" required name="depart" type="date" id="depart" /></label><br/>
+            <form id=resa  action="recapitulatif.html" >
+                <input required name="nom" type="text" placeholder="Nom*" /><br/>
+                <input required name="prenom" type="text" placeholder="Prénom*" /><br/>
+                <input required name="email" type="email" placeholder="e-mail*" /><br/>
+                <input name="tel" type="tel" placeholder="Téléphone" /><br/>
+                <label>Du : <input onchange ="doublefonction(this.id)" required name="depart" type="date" id="depart" /></label><br/>
 
-            <label>Au : <input onchange ="doublefonction(this.id)" required name="retour" type="date" id="retour" /></label><br/>
+                <label>Au : <input onchange ="doublefonction(this.id)" required name="retour" type="date" id="retour" /></label><br/>
 
-            <input oninput ="doublefonction3(this.id)" required name="adultes" id=adultes type="number" min=0 placeholder="Nombre d'adultes*" /><br/>
-            <input oninput ="doublefonction3(this.id)" required name="enfants" id=enfants  type="number" min=0 placeholder="Nombre d'enfants (-12 ans)*" /><br/>
-            <label><input onchange="prixsejour()" type="checkbox" name="dej" id="dej" />Petit-déjeuner</label><br/>
-            <label><input type="checkbox" name="animal" id="animal" />Animaux</label><br/>
-            <textarea id=renseignements placeholder="Renseignements supplémentaires"></textarea><br/>
-            <input type="submit" value="Ajouter au panier"/>
-            <input type="reset" value="Réinitialiser" />
-            <br/>
-            <br/>
-            <p >
-                Prix de la commande : <span id="prix">0</span> €
-                
-            </p>
-        </form>
+                <input oninput ="doublefonction3(this.id)" required name="adultes" id=adultes type="number" min=0 placeholder="Nombre d'adultes*" /><br/>
+                <input oninput ="doublefonction3(this.id)" required name="enfants" id=enfants  type="number" min=0 placeholder="Nombre d'enfants (-12 ans)*" /><br/>
+                <label><input onchange="prixsejour()" type="checkbox" name="dej" id="dej" />Petit-déjeuner</label><br/>
+                <label><input type="checkbox" name="animal" id="animal" />Animaux</label><br/>
+                <textarea id=renseignements placeholder="Renseignements supplémentaires"></textarea><br/>
+                <input type="submit" value="Ajouter au panier"/>
+                <input type="reset" value="Réinitialiser" />
+                <br/>
+                <br/>
+                <p >
+                    Prix de la commande : <span id="prix">0</span> €
+                    
+                </p>
+            </form>
+        </section>
     </div>
     
     <div id=fleche><a href="#haut">↑</a></div>
@@ -63,5 +67,4 @@
 
 
 </body>
-<script src="main.js"></script>
 </html>
