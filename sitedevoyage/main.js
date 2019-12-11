@@ -190,8 +190,12 @@ function d() {
     document.getElementById("retour").value = filtreuser.retour;
     document.getElementById("dej").checked = filtreuser.dejeuner; /* bloquer petit dej à decocher si impossible d'en prendre un */
     document.getElementById("animal").checked = filtreuser.animaux; /* bloquer animaux à decocher si impossible d'en prendre un */
+}
 
-
+function recupPanier() {
+    for (var entree in document.forms["resa"].elements){
+        alert(document.forms["resa"].elements[entree].value)
+}
 }
 
 function meteo(id) {   // Récupération des données de météo 
