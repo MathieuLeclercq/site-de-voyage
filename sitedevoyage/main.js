@@ -11,9 +11,9 @@ fetch("compte.json").then(function(x){ return x.json();}).then(function(x){ comp
 
 if (JSON.parse(sessionStorage.getItem("itemVoyages")) == null) {    // crée une liste uniquement si la liste des voyages est vide
     var lesVoyages=[];
-   } else {
-       var lesVoyages = JSON.parse(sessionStorage.getItem("itemVoyages"));
-   }
+} else {
+    var lesVoyages = JSON.parse(sessionStorage.getItem("itemVoyages"));
+}
 
 function filtre() {  // Permet de griser les destinations incompatibles avec les choix rentrés dans la barre de navigation :
                     // prix max, dispo des dates, présence de petit dej, présence d'animaux.
