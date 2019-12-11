@@ -22,6 +22,12 @@
         color: black;
     }
     
+    #tousVoyages {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex:1;
+    }
     a.contact:link,
     a.contact:visited {
         text-decoration: none;
@@ -75,10 +81,14 @@
         flex: 1;
     }
     
-    #centerresa {
+    
+    #centerresa
+    {
         flex: 1;
-        width: 40%;
-        margin-left: 30%;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        
     }
 
     .souss {
@@ -87,6 +97,14 @@
         width: 40%;
         height: min-content;
         margin-bottom: 2em;
+        box-shadow: 0px 1px 2px 1px #aaa;
+    }
+
+    .souss2 {
+        text-align: center;
+        width: 100%;
+        height: min-content;
+        margin-top: 2em;
         box-shadow: 0px 1px 2px 1px #aaa;
     }
     
@@ -124,7 +142,6 @@
         background-color: rgb(28, 138, 219);
         padding: 0;
         margin: 0;
-        margin-top: 10px;
         box-shadow: 0px 0px 2px 1px #aaa;
         justify-content: center;
     }
@@ -238,6 +255,7 @@
         .souss {
             width: 70%;
         }
+        
     }
     
     @media all and (max-width: 1024px) {
