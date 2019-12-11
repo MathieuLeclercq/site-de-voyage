@@ -212,7 +212,7 @@ document.getElementById('loginform').addEventListener('submit', function(){
 
 function bellepdp(){
     connecte = JSON.parse(sessionStorage.getItem("connecte"));
-    if (connecte != "null") {
+    if (connecte != null) {
         document.getElementById("login").style.backgroundImage = "url(" + connecte.photo + ")";
         document.getElementById("login").style.backgroundSize = "contain";
         document.getElementById("login").removeAttribute("href");
