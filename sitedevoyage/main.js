@@ -191,13 +191,33 @@ function d() {
     document.getElementById("dej").checked = filtreuser.dejeuner; /* bloquer petit dej à decocher si impossible d'en prendre un */
     document.getElementById("animal").checked = filtreuser.animaux; /* bloquer animaux à decocher si impossible d'en prendre un */
 }
-
-function recupPanier() {
+document.getElementById('resa').addEventListener('submit',function(){
+    lForm = [];
     for (var entree in document.forms["resa"].elements){
-        alert(document.forms["resa"].elements[entree].value)
-}
-}
+        lForm.push(document.forms["resa"].elements[entree].value)
+    }
+    for (var i in [1,2,3,4,5,6,7,8]){
+        var pif=lForm.pop();
+    }
+    var petitDeJCheck = document.getElementById('dej').checked;
+    var animauxCheck = document.getElementById('animal').checked;
+    var renseignements = document.getElementById('renseignements').value;
+    lForm.push(petitDeJCheck);
+    lForm.push(animauxCheck);
+    lForm.push(renseignements);
+    var endroit = window.location.hash.substr(1);
+    lForm.push(endroit);
+    alert(lForm)
+    window.sessionStorage.setItem("formulaire",JSON.stringify(lForm));
+})
 
+function envoiPanier() {
+    var strFormulaire = window.sessionStorage.getItem('formulaire');
+    console.log(strFormulaire);
+
+
+
+}
 function meteo(id) {   // Récupération des données de météo 
     fetch("http://api.openweathermap.org/data/2.5/weather?id=" + destinations[id][7] + "&appid=53abf0667a0c2625fd059b88b10e51f7")
         .then(function(resp) { return resp.json() })
