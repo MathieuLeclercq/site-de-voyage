@@ -1,11 +1,6 @@
 ﻿
 
 
-if (JSON.parse(sessionStorage.getItem("itemVoyages")) == null) {    // crée une liste uniquement si la liste des voyages est vide
-     var lesVoyages=[]
-    } else {
-        var lesVoyages = JSON.parse(sessionStorage.getItem("itemVoyages"))
-    }
 
 
 var destinations = {} // Stockage des informations sur les destinations qu'on va importer depuis le fichier pays.json
@@ -13,6 +8,12 @@ fetch("pays.json").then(function(x){ return x.json();}).then(function(x){ destin
 
 var compte = {} // Stockage des informations sur les destinations qu'on va importer depuis le fichier compte.json
 fetch("compte.json").then(function(x){ return x.json();}).then(function(x){ compte= x;})  
+
+if (JSON.parse(sessionStorage.getItem("itemVoyages")) == null) {    // crée une liste uniquement si la liste des voyages est vide
+    var lesVoyages=[];
+   } else {
+       var lesVoyages = JSON.parse(sessionStorage.getItem("itemVoyages"));
+   }
 
 function filtre() {  // Permet de griser les destinations incompatibles avec les choix rentrés dans la barre de navigation :
                     // prix max, dispo des dates, présence de petit dej, présence d'animaux.
@@ -40,13 +41,13 @@ function createvoyages() {   // Affiche les destinations dynamiquement sur la pa
         if (destinations[i][7] == 0) {   // On s'occupe ici des pays
             let clone = document.importNode(template.content, true);
             newContent = clone.firstElementChild.innerHTML.replace(/{{iddest}}/g, i).replace(/{{iddest2}}/g, i).replace(/{{dest}}/g, destinations[i][0]);
-            clone.firstElementChild.innerHTML = newContent
+            clone.firstElementChild.innerHTML = newContent;
             document.getElementById("ulpays").appendChild(clone);
 
         } else if (destinations[i][7] != 0) {  // On s'occupe ici des villes
             let clone = document.importNode(template2.content, true);
             newContent = clone.firstElementChild.innerHTML.replace(/{{iddest}}/g, i).replace(/{{iddest2}}/g, i).replace(/{{dest}}/g, destinations[i][0]);
-            clone.firstElementChild.innerHTML = newContent
+            clone.firstElementChild.innerHTML = newContent;
             document.getElementById("ulvilles").appendChild(clone);
         }
     }
@@ -125,7 +126,7 @@ if (window.location.pathname.substring(14,window.location.pathname.length-5) == 
             objNav.style.position = "relative";
             document.getElementById("center").style.marginTop = "0";
             document.getElementById("fleche").style.visibility = "hidden";
-            document.getElementById("search").style.marginTop = "16px"
+            document.getElementById("search").style.marginTop = "16px";
         }
         if(this.pageYOffset + window.innerHeight >= document.querySelector("footer").offsetTop){
             document.getElementById("fleche").style.bottom = String(this.pageYOffset + window.innerHeight - document.querySelector("footer").offsetTop + 15) + "px"
@@ -240,7 +241,7 @@ function doublefonction3(lequel) { // Permet d'appeler plusieurs fonctions en un
 function doublefonction4() {     // Permet d'appeler plusieurs fonctions en une fois
     createvoyages();
     appliquerMeteo();
-    bellepdp()
+    bellepdp();
 
 }
 
@@ -270,7 +271,7 @@ function filtrepassant() {
     document.getElementById("dej").checked = filtreuser.dejeuner; /* bloquer petit dej à decocher si impossible d'en prendre un */
     document.getElementById("animal").checked = filtreuser.animaux; /* bloquer animaux à decocher si impossible d'en prendre un */
 
-    bellepdp()
+    bellepdp();
 }
 
 
@@ -303,9 +304,9 @@ if (window.location.pathname.substring(14,window.location.pathname.length-5) == 
 
 
 function envoiPanier() {
+    bellepdp();
+    lesVoyages.forEach(ajoutDuVoyage);
     
-    lesVoyages.forEach(ajoutDuVoyage)
-    bellepdp()
 }
 
 function ajoutDuVoyage(voyage){
