@@ -332,7 +332,21 @@ function envoiPanier() {
 
 function ajoutDuVoyage(voyage){
     var p = document.createElement("p");
-    var nom = 'Nom et prénom : ' +voyage[0];
+    var ul = document.createElement('ul');
+    var li1 = document.createElement('li');
+    var li2 = document.createElement('li');
+    var li3 = document.createElement('li');
+    var li4 = document.createElement('li');
+    var li5 = document.createElement('li');
+    var li6 = document.createElement('li');
+    var li7 = document.createElement('li');
+    var li8 = document.createElement('li');
+    var li9 = document.createElement('li');
+    var li10 = document.createElement('li');
+    var li11 = document.createElement('li');
+    var li12 = document.createElement('li');
+
+    var nom = 'Nom et prénom : ' +voyage[0]+' ' +voyage[1];
     var prenom = voyage[1];
     var mail = 'mail du compte : ' +voyage[2];
     var tel = 'numéro de téléphone : '+voyage [3];
@@ -350,13 +364,38 @@ function ajoutDuVoyage(voyage){
     } else {
         var animaux = "Présence d'animaux : non";
     }
-    var commentaire = 'Commentaire supplémentaire : ' +[10];
-    var destination = 'destination : ' +voyage[11];
+    var commentaire = 'Commentaire supplémentaire : ' +voyage[10];
+    var destination = 'destination : ' +destinations[voyage[11]][0];
     var prix = 'Prix du voyage : ' +voyage[12]+ ' €';
 
-
-    p.innerHTML = prix;
+    li1.innerHTML = prix;
+    li2.innerHTML = nom;
+    li3.innerHTML = prenom;
+    li4.innerHTML = mail;
+    li5.innerHTML = tel;
+    li6.innerHTML = depart;
+    li7.innerHTML = retour;
+    li8.innerHTML = nbAdultes;
+    li9.innerHTML = nbEnfants;
+    li10.innerHTML = dej;
+    li11.innerHTML = animaux;
+    li12.innerHTML = commentaire;
+    p.innerHTML = destination;
     document.getElementById('tousVoyages').appendChild(p)
+    p.appendChild(ul)
+    ul.appendChild(li1)
+    ul.appendChild(li2)
+    
+    ul.appendChild(li4)
+    ul.appendChild(li5)
+    ul.appendChild(li6)
+    ul.appendChild(li7)
+    ul.appendChild(li8)
+    ul.appendChild(li9)
+    ul.appendChild(li10)
+    ul.appendChild(li11)
+    ul.appendChild(li12)
+    
 
 
 }
