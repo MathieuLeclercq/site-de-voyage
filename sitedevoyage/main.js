@@ -16,7 +16,8 @@
 var destinations = {} // Stockage des informations sur les destinations qu'on va importer depuis le fichier pays.json
 fetch("pays.json").then(function(x){ return x.json();}).then(function(x){ destinations= x;})
 
-  
+var compte = {} // Stockage des informations sur les destinations qu'on va importer depuis le fichier compte.json
+fetch("compte.json").then(function(x){ return x.json();}).then(function(x){ compte= x;})  
 
 function filtre() {  // Permet de griser les destinations incompatibles avec les choix rentrés dans la barre de navigation :
                     // prix max, dispo des dates, présence de petit dej, présence d'animaux.
@@ -83,7 +84,7 @@ function datesok(lequel) {  // fonction qui n'autorise la saisie que de dates va
 
 
 function prixsejour() { // Calcule le prix du séjour en temps réel, suivant les valeurs saisies dans le formulaire de réservation.
-    var pays = window.location.hash.substr(1);
+    var pays = window.location.hash.substring(1);
     var nbEnfants = Number(document.getElementById("enfants").value);
     var nbAdultes = Number(document.getElementById("adultes").value);
 
@@ -111,36 +112,122 @@ function nombreok(lequel) {
 
 }
 
-window.addEventListener("scroll", function(){
-    let objNav = document.getElementById("navfil");
-    // on mémorise la position de nav
-    let memoPositionNav = objNav.offsetTop;
-    // position du curseur au scroll
-    var posCurseur = this.pageYOffset;
-    // je teste la différence de distance entre le scroll et nav
-    if(memoPositionNav-posCurseur< 1){
-        objNav.style.position = "fixed";
-        objNav.style.top = 0;
-        /*document.getElementById("center").style.marginTop = String(document.getElementById("navfil").clientHeight + 15)+"px";*/
-        document.getElementById("search").style.marginTop = String(document.getElementById("navfil").clientHeight + 16)+"px"
-        document.getElementById("fleche").style.visibility = "visible";
-    
+if (window.location.pathname.substring(14,window.location.pathname.length-5) == "homepage") {
+    window.addEventListener("scroll", function(){
+        let objNav = document.getElementById("navfil");
+        // on mémorise la position de nav
+        let memoPositionNav = objNav.offsetTop;
+        // position du curseur au scroll
+        var posCurseur = this.pageYOffset;
+        // je teste la différence de distance entre le scroll et nav
+        if(memoPositionNav-posCurseur< 1){
+            objNav.style.position = "fixed";
+            objNav.style.top = 0;
+            /*document.getElementById("center").style.marginTop = String(document.getElementById("navfil").clientHeight + 15)+"px";*/
+            
+            document.getElementById("search").style.marginTop = String(document.getElementById("navfil").clientHeight + 16)+"px"
+            document.getElementById("fleche").style.visibility = "visible";
+        
+
+        }
+        if(posCurseur<56){
+            objNav.style.position = "relative";
+            document.getElementById("center").style.marginTop = "0";
+            document.getElementById("fleche").style.visibility = "hidden";
+            document.getElementById("search").style.marginTop = "16px"
+        }
+        if(this.pageYOffset + window.innerHeight >= document.querySelector("footer").offsetTop){
+            document.getElementById("fleche").style.bottom = String(this.pageYOffset + window.innerHeight - document.querySelector("footer").offsetTop + 15) + "px"
+        }
+
+    });
+}
+else if (window.location.pathname.substring(14,window.location.pathname.length-5) == "Reservation") {
+    window.addEventListener("scroll", function(){
+        let memoPositionNav = document.getElementById("centerresa").offsetTop;
+        // position du curseur au scroll
+        var posCurseur = this.pageYOffset;
+        // je teste la différence de distance entre le scroll et nav
+        if(memoPositionNav-posCurseur< 1){
+            document.getElementById("fleche").style.visibility = "visible";
+        }
+
+        if(posCurseur<56){
+            document.getElementById("fleche").style.visibility = "hidden";
+        }
+        if(this.pageYOffset + window.innerHeight >= document.querySelector("footer").offsetTop){
+            document.getElementById("fleche").style.bottom = String(this.pageYOffset + window.innerHeight - document.querySelector("footer").offsetTop + 15) + "px"
+        }
+
+    });
+}
+else {
+    window.addEventListener("scroll", function(){
+        let memoPositionNav = document.getElementById("center").offsetTop;
+        // position du curseur au scroll
+        var posCurseur = this.pageYOffset;
+        // je teste la différence de distance entre le scroll et nav
+        if(memoPositionNav-posCurseur< 1){
+            document.getElementById("fleche").style.visibility = "visible";
+        }
+
+        if(posCurseur<56){
+            document.getElementById("fleche").style.visibility = "hidden";
+        }
+        if(this.pageYOffset + window.innerHeight >= document.querySelector("footer").offsetTop){
+            document.getElementById("fleche").style.bottom = String(this.pageYOffset + window.innerHeight - document.querySelector("footer").offsetTop + 15) + "px"
+        }
+
+    });
+}
+
+function identite(mail, photo) {
+    this.pseudo = mail.substring(0,mail.length-10);
+    this.photo = photo;
+}
+
+if (window.location.pathname.substring(14,window.location.pathname.length-5) == "login") {
+document.getElementById('loginform').addEventListener('submit', function(){
+    mail = document.getElementById("mail").value;
+    mdp = document.getElementById("mdp").value;
+    for (i in compte) {
+        if ((i == mail) && (compte[i][0] == mdp)) {
+            connecte = new identite(mail,compte[i][1]);
+            window.sessionStorage.setItem("connecte", JSON.stringify(connecte));
+        }
+    }
+})
+}
+
+function bellepdp(){
+    connecte = JSON.parse(sessionStorage.getItem("connecte"));
+    if (connecte != "null") {
+        document.getElementById("login").style.backgroundImage = "url(" + connecte.photo + ")";
+        document.getElementById("login").style.backgroundSize = "contain";
+        document.getElementById("login").removeAttribute("href");
+        
+        var deco = document.createElement("li");
+        deco.id = "deco";
+        document.getElementById("panel").appendChild(deco);
+        var p = document.createElement("p");
+        p.innerHTML = connecte.pseudo;
+        var ciao = document.createElement("button");
+        ciao.innerHTML = "Se deconnecter";
+        ciao.style.color = "red";
+        ciao.id = "ciao";
+        p.style.margin = 0;
+        ciao.style.margin = 0;
+        ciao.style.marginTop = "9px";
+        ciao.onclick = function() {
+            connecte = null;
+            window.sessionStorage.setItem("connecte", JSON.stringify(connecte));
+            document.location.reload(true); };
+        document.getElementById("deco").appendChild(p);
+        document.getElementById("deco").appendChild(ciao);
 
     }
-    if(posCurseur<56){
-        objNav.style.position = "relative";
-        document.getElementById("center").style.marginTop = "0";
-        document.getElementById("fleche").style.visibility = "hidden";
-        document.getElementById("search").style.marginTop = "16px"
-    }
-    if(this.pageYOffset + window.innerHeight >= document.querySelector("footer").offsetTop){
-        document.getElementById("fleche").style.bottom = String(this.pageYOffset + window.innerHeight - document.querySelector("footer").offsetTop + 15) + "px"
-    }
 
-});
-
-
-
+}
 
 
 function doublefonction(lequel) {   // Permet d'appeler plusieurs fonctions en une fois
@@ -163,7 +250,10 @@ function doublefonction4() {     // Permet d'appeler plusieurs fonctions en une 
     document.getElementById("depart").setAttribute("min",now);*/
     createvoyages();
     appliquerMeteo();
+    bellepdp()
+
 }
+
 
 
 function monFiltre(depart, arrive, dej, animaux) {
@@ -176,20 +266,22 @@ function monFiltre(depart, arrive, dej, animaux) {
 function voyageselec(dest) {
     var dest = dest; /* inutile */
     var filtreuser = new monFiltre(document.getElementById("depart").value, document.getElementById("retour").value, document.getElementById("dejeuner").checked, document.getElementById("animaux").checked);
-    window.localStorage.setItem("filtre", JSON.stringify(filtreuser));
+    window.sessionStorage.setItem("filtre", JSON.stringify(filtreuser));
 
 
 }
 
-function d() {
-    filtreuser = JSON.parse(localStorage.getItem("filtre"));
-    var endroit = window.location.hash.substr(1);
+function filtrepassant() {
+    filtreuser = JSON.parse(sessionStorage.getItem("filtre"));
+    var endroit = window.location.hash.substring(1);
     document.getElementById("voyageSelectionne").innerHTML = destinations[endroit][0];
 
     document.getElementById("depart").value = filtreuser.depart;
     document.getElementById("retour").value = filtreuser.retour;
     document.getElementById("dej").checked = filtreuser.dejeuner; /* bloquer petit dej à decocher si impossible d'en prendre un */
     document.getElementById("animal").checked = filtreuser.animaux; /* bloquer animaux à decocher si impossible d'en prendre un */
+
+    bellepdp()
 }
 
 function recupPanier() {
