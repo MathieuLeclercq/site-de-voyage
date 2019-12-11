@@ -1,20 +1,4 @@
-﻿/*var destinations = {  // Stockage des informations sur les destinations
-    "pt": ["Portugal", 200, true, true, false, true, "images/portugal.jpg", 0],
-    "it": ["Italie", 100, true, true, true, false, "images/italie.jpg", 0],
-    "ir": ["Irlande", 300, true, true, true, true, "images/ireland.jpg", 0],
-    "jp": ["Japon", 800, true, true, false, false, "images/japon.jpg", 0],
-    "us": ["Etats-Unis", 1100, true, true, false, true, "images/usa.PNG", 0],
-    "es": ["Espagne", 50, true, true, true, false, "images/espagne.jpg", 0],
-    "lis": ["Lisbonne", 200, true, true, false, false, "images/Lisbonne.jpg", 2267057],
-    "lon": ["Londres", 500, true, true, true, false, "images/londres.jpeg", 2643743],
-    "dub": ["Dublin", 400, true, true, false, true, "images/dublin.jpg", 2964574],
-    "nyc": ["New York", 1100, true, true, true, true, "images/New-York.jpg", 5128581],
-    "sin": ["Singapour", 800, true, true, false, false, "images/singapour.jpg", 1880252],
-    "par": ["Paris", 50, true, true, false, false, "images/paris.jpeg", 2988507]
-};*/
-
- 
-  
+﻿
 
 
 if (JSON.parse(sessionStorage.getItem("itemVoyages")) == null) {    // crée une liste uniquement si la liste des voyages est vide
@@ -36,14 +20,11 @@ function filtre() {  // Permet de griser les destinations incompatibles avec les
 
     for (var i in destinations) {
         if (!(destinations[i][0].toLowerCase().startsWith(document.getElementById("search").value.toLowerCase())) || (document.getElementById("prix").value < destinations[i][1]) || ((document.getElementById("dejeuner").checked) && (destinations[i][4] == false)) || ((document.getElementById("animaux").checked) && (destinations[i][5] == false))) {
-            /*document.getElementById(i).style.opacity = "0.30";
-            document.getElementById(i).removeAttribute("href");*/
+            
 
             document.getElementById(i).parentNode.style.display = "None";
             
         } else {
-            /*document.getElementById(i).style.opacity = "1.00";
-            document.getElementById(i).href = "Reservation.html?name=#" + i;*/
 
             document.getElementById(i).parentNode.style.display = "flex";
         }
@@ -134,7 +115,6 @@ if (window.location.pathname.substring(14,window.location.pathname.length-5) == 
         if(memoPositionNav-posCurseur< 1){
             objNav.style.position = "fixed";
             objNav.style.top = 0;
-            /*document.getElementById("center").style.marginTop = String(document.getElementById("navfil").clientHeight + 15)+"px";*/
             
             document.getElementById("search").style.marginTop = String(document.getElementById("navfil").clientHeight + 16)+"px"
             document.getElementById("fleche").style.visibility = "visible";
@@ -222,7 +202,8 @@ function bellepdp(){
         document.getElementById("panel").appendChild(deco);
         var p = document.createElement("p");
         p.innerHTML = connecte.pseudo;
-        var ciao = document.createElement("button");
+        var ciao = document.createElement("a");
+        ciao.href = "#";
         ciao.innerHTML = "Se deconnecter";
         ciao.style.color = "red";
         ciao.id = "ciao";
@@ -257,8 +238,6 @@ function doublefonction3(lequel) { // Permet d'appeler plusieurs fonctions en un
 }
 
 function doublefonction4() {     // Permet d'appeler plusieurs fonctions en une fois
-    /*var now = new Date();    
-    document.getElementById("depart").setAttribute("min",now);*/
     createvoyages();
     appliquerMeteo();
     bellepdp()
@@ -275,7 +254,6 @@ function monFiltre(depart, arrive, dej, animaux) {
 }
 
 function voyageselec(dest) {
-    var dest = dest; /* inutile */
     var filtreuser = new monFiltre(document.getElementById("depart").value, document.getElementById("retour").value, document.getElementById("dejeuner").checked, document.getElementById("animaux").checked);
     window.sessionStorage.setItem("filtre", JSON.stringify(filtreuser));
 
