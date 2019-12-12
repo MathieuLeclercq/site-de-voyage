@@ -195,12 +195,20 @@
         margin: 0;
         padding: 0;
         background-color: inherit;
+        display: flex;
+        flex-wrap: wrap-reverse;
     }
     
+
+
     header>ul>li {
+        display: flex;
+        flex-direction: column;
         padding: 0;
     }
     
+
+
     header>ul>li>a {
         display: flex;
         width: 100%;
