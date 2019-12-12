@@ -1,9 +1,4 @@
-﻿
-
-
-
-
-var destinations = {} // Stockage des informations sur les destinations qu'on va importer depuis le fichier pays.json
+﻿var destinations = {} // Stockage des informations sur les destinations qu'on va importer depuis le fichier pays.json
 fetch("pays.json").then(function(x){ return x.json();}).then(function(x){ destinations= x;})
 
 var compte = {} // Stockage des informations sur les destinations qu'on va importer depuis le fichier compte.json
@@ -213,7 +208,11 @@ function bellepdp(){
         ciao.onclick = function() {
             connecte = null;
             window.sessionStorage.setItem("connecte", JSON.stringify(connecte));
-            document.location.reload(true); };
+            document.location.reload(true);
+            lesVoyages = [];
+            sessionStorage.setItem('itemVoyages',JSON.stringify(lesVoyages));
+            
+        };
         document.getElementById("deco").appendChild(p);
         document.getElementById("deco").appendChild(ciao);
     }
@@ -303,11 +302,11 @@ if (window.location.pathname.substring(14,window.location.pathname.length-5) == 
 
 function envoiPanier() {
     bellepdp();
-    lesVoyages.forEach(ajoutDuVoyage);
+    lesVoyages.forEach(ajoutDuVoyage);   // parcours des destinations, avec leurs informations.
     
 }
 
-function ajoutDuVoyage(voyage){
+function ajoutDuVoyage(voyage){   // Ajout dynamique des destinations l'une en dessous de l'autre.
     var p = document.createElement("p");
     var ul = document.createElement('ul');
     var li1 = document.createElement('li');
@@ -377,12 +376,12 @@ function ajoutDuVoyage(voyage){
 
 }
 function meteo(id) {   // Récupération des données de météo 
-    /*fetch("http://api.openweathermap.org/data/2.5/weather?id=" + destinations[id][7] + "&appid=53abf0667a0c2625fd059b88b10e51f7")
+    fetch("http://api.openweathermap.org/data/2.5/weather?id=" + destinations[id][7] + "&appid=53abf0667a0c2625fd059b88b10e51f7")
         .then(function(resp) { return resp.json() })
         .then(function(data) {
             var temperature = Math.round(parseFloat(data.main.temp) - 273.15);
             document.getElementById(id).innerHTML += ' ' + temperature + ' °C';
-        })*/
+        })
 
 }
 function appliquerMeteo() { // Affichage de la météo sur toutes les villes, et pas les pays
