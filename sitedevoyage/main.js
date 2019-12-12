@@ -205,8 +205,7 @@ function bellepdp(){
         p.innerHTML = connecte.pseudo;
         var ciao = document.createElement("a");
         ciao.href = "#";
-        ciao.innerHTML = "Se deconnecter";
-        ciao.style.color = "red";
+        ciao.innerHTML = "Se déconnecter";
         ciao.id = "ciao";
         p.style.margin = 0;
         ciao.style.margin = 0;
@@ -217,7 +216,6 @@ function bellepdp(){
             document.location.reload(true); };
         document.getElementById("deco").appendChild(p);
         document.getElementById("deco").appendChild(ciao);
-
     }
 
 }
@@ -379,12 +377,12 @@ function ajoutDuVoyage(voyage){
 
 }
 function meteo(id) {   // Récupération des données de météo 
-    fetch("http://api.openweathermap.org/data/2.5/weather?id=" + destinations[id][7] + "&appid=53abf0667a0c2625fd059b88b10e51f7")
+    /*fetch("http://api.openweathermap.org/data/2.5/weather?id=" + destinations[id][7] + "&appid=53abf0667a0c2625fd059b88b10e51f7")
         .then(function(resp) { return resp.json() })
         .then(function(data) {
             var temperature = Math.round(parseFloat(data.main.temp) - 273.15);
             document.getElementById(id).innerHTML += ' ' + temperature + ' °C';
-        })
+        })*/
 
 }
 function appliquerMeteo() { // Affichage de la météo sur toutes les villes, et pas les pays
