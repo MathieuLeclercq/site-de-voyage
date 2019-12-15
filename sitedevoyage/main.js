@@ -18,15 +18,11 @@ function filtre() {  // Permet de griser les destinations incompatibles avec les
         if (!(destinations[i][0].toLowerCase().startsWith(document.getElementById("search").value.toLowerCase())) || (document.getElementById("prix").value < destinations[i][1]) || ((document.getElementById("dejeuner").checked) && (destinations[i][4] == false)) || ((document.getElementById("animaux").checked) && (destinations[i][5] == false))) {
             
 
-            document.getElementById(i).parentNode.style.display = "None";
-            
+            document.getElementById(i).parentNode.style.display = "None";            
         } else {
-
             document.getElementById(i).parentNode.style.display = "flex";
         }
-
     }
-
 }
 
 function createvoyages() {   // Affiche les destinations dynamiquement sur la page d'accueil suivant le template
@@ -112,7 +108,7 @@ if (window.location.pathname.substring(14,window.location.pathname.length-5) == 
             objNav.style.position = "fixed";
             objNav.style.top = 0;
             
-            document.getElementById("search").style.marginTop = String(document.getElementById("navfil").clientHeight + 16)+"px"
+            document.getElementById("search").style.marginTop = String(document.getElementById("navfil").clientHeight+16)+"px"
             document.getElementById("fleche").style.visibility = "visible";
         
 
@@ -173,8 +169,8 @@ function identite(mail, photo) {
     this.photo = photo;
 }
 
-if (window.location.pathname.substring(14,window.location.pathname.length-5) == "login") {
-document.getElementById('loginform').addEventListener('submit', function(){
+if (window.location.pathname.substring(14,window.location.pathname.length-5) == "login") { // ne s"active que quand on est sur la page login
+document.getElementById('loginform').addEventListener('submit', function(){ // envoie l'id de l'utilisateur sur le sessionStorage.
     mail = document.getElementById("mail").value;
     mdp = document.getElementById("mdp").value;
     for (i in compte) {
@@ -186,7 +182,7 @@ document.getElementById('loginform').addEventListener('submit', function(){
 })
 }
 
-function bellepdp(){
+function bellepdp(){      // Ajoute la photo de profil et l'option 'se déconnecter' quand on se connecte.
     connecte = JSON.parse(sessionStorage.getItem("connecte"));
     if (connecte != null) {
         document.getElementById("login").style.backgroundImage = "url(" + connecte.photo + ")";
@@ -273,7 +269,7 @@ function filtrepassant() {
 
 
 if (window.location.pathname.substring(14,window.location.pathname.length-5) == "Reservation") {
-    document.getElementById('resa').addEventListener('submit',function(){
+    document.getElementById('resa').addEventListener('submit',function(){ // Ajout d'un voyage dans le sessionStorage quand le formulaire est rempli.
         lForm = [];
         for (var entree in document.forms["resa"].elements){
             lForm.push(document.forms["resa"].elements[entree].value)
@@ -281,7 +277,6 @@ if (window.location.pathname.substring(14,window.location.pathname.length-5) == 
         for (var i in [1,2,3,4,5,6,7,8]){
             var pif=lForm.pop();
         }
-        
         var petitDeJCheck = document.getElementById('dej').checked;
         var animauxCheck = document.getElementById('animal').checked;
         var renseignements = document.getElementById('renseignements').value;
@@ -322,6 +317,9 @@ function ajoutDuVoyage(voyage){   // Ajout dynamique des destinations l'une en d
     var li11 = document.createElement('li');
     var li12 = document.createElement('li');
 
+
+
+
     var nom = 'Nom et prénom : ' +voyage[0]+' ' +voyage[1];
     var prenom = voyage[1];
     var mail = 'mail du compte : ' +voyage[2];
@@ -343,6 +341,8 @@ function ajoutDuVoyage(voyage){   // Ajout dynamique des destinations l'une en d
     var commentaire = 'Commentaire supplémentaire : ' +voyage[10];
     var destination = 'destination : ' +destinations[voyage[11]][0];
     var prix = 'Prix du voyage : ' +voyage[12]+ ' €';
+
+
 
     li1.innerHTML = prix;
     li2.innerHTML = nom;
