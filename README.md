@@ -4,3 +4,5 @@ We had to realize the *front-end* part of the website. With some json file to si
 We thus set up the website in HTML5 and CSS3, and native javascript (JS frameworks not authorized for this first web project). We also had to use the *open weather map API* in order to have a first approach of web APIs.   
 It was a good first experience of web development and its uses.   
 *All the program and comments are in French.*
+
+![Brazaville homepage](Brazaville_homepage.png)
